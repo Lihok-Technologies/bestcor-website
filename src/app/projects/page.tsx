@@ -81,8 +81,33 @@ export default function ProjectsPage() {
 
       <section aria-label="Photographs" className="border-b border-border bg-background">
         <div className="wrap py-16 md:py-20">
-          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4 lg:gap-4">
-            {shown.map((asset, i) => (
+          {/* Featured wide photograph anchors the wall */}
+          {shown.length > 0 ? (
+            <ImageReveal>
+              <figure className="photo-tile group">
+                <Image
+                  src={shown[0].src}
+                  alt={shown[0].alt}
+                  width={shown[0].width}
+                  height={shown[0].height}
+                  sizes="100vw"
+                  className="aspect-[16/9] w-full object-cover sm:aspect-[21/9]"
+                  priority
+                />
+                <figcaption className="absolute inset-x-0 bottom-0 flex items-center justify-between gap-2 bg-gradient-to-t from-black/85 to-transparent px-5 pt-14 pb-4">
+                  <span className="text-[0.75rem] font-bold tracking-[0.18em] text-white uppercase">
+                    {shown[0].chip}
+                  </span>
+                  <span className="font-mono text-[0.6875rem] text-white/60">
+                    {shown[0].source.replace("fb_", "#")}
+                  </span>
+                </figcaption>
+              </figure>
+            </ImageReveal>
+          ) : null}
+
+          <div className="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:mt-4 lg:grid-cols-4 lg:gap-4">
+            {shown.slice(1).map((asset, i) => (
               <ImageReveal key={`${asset.source}-${i}`} delay={(i % 4) * 0.05}>
                 <figure className="photo-tile group aspect-square">
                   <Image
