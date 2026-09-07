@@ -22,14 +22,22 @@ export type EmailConfig = {
 /* Sanitization helpers                                                */
 /* ------------------------------------------------------------------ */
 
-/** Remove control characters (incl. CR/LF used in header/subject attacks). */
+/** One-line value: control characters gone, whitespace runs collapsed. */
 export function stripControl(value: string): string {
   return value.replace(/[\u0000-\u001f\u007f-\u009f]/g, " ").replace(/\s+/g, " ").trim();
 }
 
+/** Display value: control characters gone but internal spacing preserved. */
+export function stripControlKeepSpacing(value: string): string {
+  return value.replace(/[\u0000-\u001f\u007f-\u009f]/g, " ").trim();
+}
+
 /** Keep real line breaks but drop every other control character. */
 export function sanitizeMultiline(value: string): string {
-  return value.replace(/[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f-\u009f]/g, "").trim();
+  return value
+    .replace(/[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f-\u009f]/g, "")
+    .replace(/[\u2028\u2029]/g, "\n")
+    .trim();
 }
 
 /** HTML-escape user content so it can never alter email markup. */
@@ -63,17 +71,17 @@ export function buildSubject(p: QuotationPayload): string {
 
 export function humanTimestamp(iso: string): string {
   const d = new Date(iso);
-  return Number.isNaN(d.getTime()) ? iso : d.toUTCString();
+  return Number.isNaN(d.getTime()) ? stripControl(iso) : d.toUTCString();
 }
 
 function optionalLines(p: QuotationPayload): string[] {
   return [
-    p.company ? `Company: ${stripControl(p.company)}` : "",
-    `Email: ${p.email}`,
-    p.phone ? `Phone: ${stripControl(p.phone)}` : "",
-    p.location ? `Project Location: ${stripControl(p.location)}` : "",
-    p.service ? `Service Required: ${stripControl(serviceLabel(p.service))}` : "",
-    p.schedule ? `Desired Schedule: ${stripControl(p.schedule)}` : "",
+    p.company ? `Company: ${stripControlKeepSpacing(p.company)}` : "",
+    `Email: ${stripControlKeepSpacing(p.email)}`,
+    p.phone ? `Phone: ${stripControlKeepSpacing(p.phone)}` : "",
+    p.location ? `Project Location: ${stripControlKeepSpacing(p.location)}` : "",
+    p.service ? `Service Required: ${stripControlKeepSpacing(serviceLabel(p.service))}` : "",
+    p.schedule ? `Desired Schedule: ${stripControlKeepSpacing(p.schedule)}` : "",
   ].filter(Boolean);
 }
 
@@ -82,13 +90,13 @@ export function buildEmailText(p: QuotationPayload): string {
     "BESTCOR PHILS., INC. — QUOTATION REQUEST",
     "========================================",
     "",
-    `Name: ${stripControl(p.name)}`,
+    `Name: ${stripControlKeepSpacing(p.name)}`,
     ...optionalLines(p),
     "",
     "PROJECT DESCRIPTION / SCOPE:",
     sanitizeMultiline(p.description),
     "",
-    `SOURCE: Bestcor website (bestcor.ph)`,
+    `SOURCE: ${site.legalName} website (${site.websiteDomain})`,
     `TIMESTAMP: ${humanTimestamp(p.submittedAt)}`,
   ];
   return lines.join("\n") + "\n";
@@ -105,7 +113,7 @@ function rowHtml(label: string, value: string): string {
 
 export function buildEmailHtml(p: QuotationPayload): string {
   const rows = [
-    rowHtml("Name", stripControl(p.name)),
+    rowHtml("Name", stripControlKeepSpacing(p.name)),
     ...optionalLines(p).map((line) => {
       const idx = line.indexOf(": ");
       const label = idx > -1 ? line.slice(0, idx) : line;
@@ -119,6 +127,10 @@ export function buildEmailHtml(p: QuotationPayload): string {
 
   return `<!doctype html>
 <html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
 <body style="margin:0;padding:0;background:#e7ece8;">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#e7ece8;padding:24px 12px;">
   <tr><td align="center">
@@ -131,7 +143,7 @@ export function buildEmailHtml(p: QuotationPayload): string {
     </tr>
     <tr>
       <td style="padding:30px 34px 6px;">
-        <div style="font-size:11px;font-weight:bold;color:#d0211a;letter-spacing:2.2px;text-transform:uppercase;">Bestcor website — bestcor.ph</div>
+        <div style="font-size:11px;font-weight:bold;color:#d0211a;letter-spacing:2.2px;text-transform:uppercase;">${site.legalName} website — ${site.websiteDomain}</div>
         <h1 style="margin:10px 0 0;font-size:24px;color:#101612;letter-spacing:0.2px;">Quotation Request</h1>
       </td>
     </tr>
@@ -149,7 +161,7 @@ ${rows}
     </tr>
     <tr>
       <td style="padding:22px 34px 8px;font-size:12px;color:#4e6257;line-height:1.7;">
-        This request was submitted through the Bestcor website quotation form at <b>bestcor.ph</b>.
+        This request was submitted through the Bestcor website quotation form at <b>${site.websiteDomain}</b>.
       </td>
     </tr>
     <tr>

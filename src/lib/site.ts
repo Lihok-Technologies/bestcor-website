@@ -26,6 +26,8 @@ export const site = {
   location: "San Jose del Monte, Bulacan, Philippines",
   /** Verified published email */
   email: "info@bestcor.ph",
+  /** Production web domain (canonical host) */
+  websiteDomain: "bestcor.ph",
   /** Verified Facebook page */
   facebookUrl: "https://www.facebook.com/profile.php?id=61562975085361",
   facebookHandle: "Bestcor Phils., Inc. on Facebook",
