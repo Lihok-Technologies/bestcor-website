@@ -20,7 +20,7 @@ const VALID = {
 const CONFIG: EmailConfig = {
   apiKey: "re_test-key",
   from: "Bestcor <onboarding@resend.dev>",
-  to: "bestcorofficial2005@gmail.com",
+  to: "info@bestcor.ph",
 };
 
 const sendOk = vi.fn(async (_o: SendOpts): Promise<SendResult> => ({ ok: true, providerId: "mocked-id" }));
@@ -47,7 +47,7 @@ describe("handleQuotationRequest", () => {
   it("returns 503 CONFIG_INCOMPLETE when a key exists but no sender is set", async () => {
     const res = await handleQuotationRequest({
       raw: VALID,
-      config: { apiKey: "re_x", from: "", to: "bestcorofficial2005@gmail.com" },
+      config: { apiKey: "re_x", from: "", to: "info@bestcor.ph" },
     });
     expect(res.status).toBe(503);
     if (res.status === 503) expect(res.body.code).toBe("CONFIG_INCOMPLETE");
@@ -93,7 +93,7 @@ describe("handleQuotationRequest", () => {
     await handleQuotationRequest({ raw: VALID, config: CONFIG, send, limiter: () => true });
     expect(send).toHaveBeenCalledTimes(1);
     const arg = send.mock.calls[0]![0];
-    expect(arg.config.to).toBe("bestcorofficial2005@gmail.com");
+    expect(arg.config.to).toBe("info@bestcor.ph");
     expect(arg.config.from).toBe(CONFIG.from);
   });
 });

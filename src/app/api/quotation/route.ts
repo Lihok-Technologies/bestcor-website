@@ -11,7 +11,7 @@ import {
  * delivery (server-side only, key never leaves the server). Success is
  * reported ONLY after the provider accepts the message. Without
  * RESEND_API_KEY the endpoint reports UNCONFIGURED and the UI offers an
- * honest email fallback to bestcorofficial2005@gmail.com.
+ * honest email fallback to info@bestcor.ph.
  *
  * Required env (server): RESEND_API_KEY, BESTCOR_QUOTATION_FROM_EMAIL.
  * Optional env: BESTCOR_QUOTATION_TO_EMAIL (defaults to the published
