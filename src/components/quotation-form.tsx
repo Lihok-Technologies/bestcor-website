@@ -118,10 +118,10 @@ export function QuotationForm() {
           role="status"
           className="border border-brand/40 bg-brand/10 p-8 text-center"
         >
-          <p className="display text-[1.4rem] text-brand-bright">Request received</p>
+          <p className="display text-[1.4rem] text-brand-bright">Sent to Bestcor</p>
           <p className="mx-auto mt-3 max-w-md text-[0.9375rem] leading-relaxed text-foreground/85">
-            Thank you — Bestcor has received your quotation request and will
-            follow up at the email address you provided.
+            Thank you. Your quotation request has been sent to Bestcor and
+            will be followed up at the email address you provided.
           </p>
         </div>
       ) : (
@@ -165,9 +165,24 @@ export function QuotationForm() {
           ) : null}
 
           {status.kind === "error" ? (
-            <p role="alert" className="mb-6 border border-destructive/40 bg-destructive/10 p-4 text-[0.875rem] text-destructive">
-              {status.message}
-            </p>
+            <div
+              role="alert"
+              className="mb-6 flex flex-col gap-3 border border-destructive/40 bg-destructive/10 p-5 sm:flex-row sm:items-start"
+            >
+              <AlertTriangleIcon className="mt-0.5 size-5 shrink-0 text-destructive" aria-hidden="true" />
+              <div>
+                <p className="text-[0.875rem] leading-relaxed text-destructive">
+                  {status.message} You can also email Bestcor directly at{" "}
+                  <a
+                    href={`mailto:${site.email}`}
+                    className="font-semibold underline underline-offset-2"
+                  >
+                    {site.email}
+                  </a>
+                  .
+                </p>
+              </div>
+            </div>
           ) : null}
 
           <div className="grid gap-5 sm:grid-cols-2">

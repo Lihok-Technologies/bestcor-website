@@ -77,12 +77,12 @@ test("8. Quotation form validates and never fakes delivery", async ({ page }) =>
   await page.getByRole("checkbox", { name: /consent/i }).check();
   await page.getByRole("button", { name: /submit request/i }).click();
 
-  if (process.env.QUOTATION_WEBHOOK_URL) {
-    // Delivery endpoint configured: allow genuine success message only.
-    await expect(page.getByText("Request received", { exact: true })).toBeVisible();
+  if (process.env.RESEND_API_KEY) {
+    // Delivery configured: allow a genuine success message only.
+    await expect(page.getByText("Sent to Bestcor", { exact: true })).toBeVisible();
   } else {
-    // No transport configured: the UI must say so honestly, never fake success.
-    await expect(page.getByText(/direct delivery is not enabled/i)).toBeVisible();
-    await expect(page.getByText("Request received", { exact: true })).toHaveCount(0);
+    // No provider configured: the UI must say so honestly, never fake success.
+    await expect(page.getByText(/delivery is not enabled/i)).toBeVisible();
+    await expect(page.getByText("Sent to Bestcor", { exact: true })).toHaveCount(0);
   }
 });
