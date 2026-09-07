@@ -51,6 +51,8 @@ Bestcor's own approved design direction (owner-approved static prototype in `sou
 
 Patterns adapted: full-bleed real-photography hero with gradient overlay and technical uppercase typography, border-separated capability strip, image service cards with hover zoom + charcoal gradient, image-led work grid, editorial value pillars, image CTA band, multi-column footer, right-hand sheet mobile menu, `whileInView` reveals, focus-visible rings, reduced-motion support.
 
+**License & attribution:** the standalone shadcnstudio reference repos above are MIT — Copyright (c) 2026 shadcn/studio — and the official [shadcn-ui/ui](https://github.com/shadcn-ui/ui) registry is MIT (© 2023 shadcn). This project **adapted patterns only**; no template code, branding, copy or components were copied, so no notices are embedded in source. Attribution is recorded here out of courtesy. The `shadcnstudio/shadcn-studio` monorepo (MIT + Commons Clause) and paid templates were explicitly avoided.
+
 **Brand & imagery are entirely Bestcor's own** — exact owner logo and Bestcor's real Facebook-exported photographs. The design language (charcoal field, brand green ≈ `#4faf43`, brand red ≈ `#d0211a`) was calibrated from the actual logo file.
 
 ## 5. Local development
