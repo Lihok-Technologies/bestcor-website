@@ -40,7 +40,7 @@ afterEach(() => {
 describe("email content", () => {
   it("builds an immediately useful subject", () => {
     expect(buildSubject(PAYLOAD)).toBe(
-      "NEW WEBSITE QUOTATION REQUEST — ACME Power — Electrical Testing & Diagnostics",
+      "Quotation Request — ACME Power — Electrical Testing & Diagnostics",
     );
   });
 

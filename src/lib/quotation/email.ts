@@ -22,7 +22,7 @@ export function serviceLabel(service: string): string {
 export function buildSubject(p: QuotationPayload): string {
   const who = p.company || p.name || "Website inquiry";
   const what = serviceLabel(p.service) || "Quotation request";
-  return `NEW WEBSITE QUOTATION REQUEST — ${who} — ${what}`;
+  return `Quotation Request — ${who} — ${what}`;
 }
 
 export function buildEmailText(p: QuotationPayload): string {
