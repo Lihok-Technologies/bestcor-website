@@ -116,6 +116,14 @@ describe("email content", () => {
     expect(html).not.toContain("bestcorofficial2005@gmail.com");
   });
 
+  it("keeps the muted footer colors readable (AA contrast on light background)", () => {
+    const html = buildEmailHtml(PAYLOAD);
+    // footer/meta text darkened from #7c8b82 to #4e6257 (>= 4.5:1 on #fff/#f0f3f1)
+    expect(html).not.toContain("color:#7c8b82");
+    expect(html).toContain("color:#4e6257");
+    expect(html).toContain("Built on integrity. Driven by quality.");
+  });
+
   it("escapes user HTML so it cannot alter the message markup", () => {
     const html = buildEmailHtml({
       ...PAYLOAD,

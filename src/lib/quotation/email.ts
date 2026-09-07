@@ -97,7 +97,7 @@ export function buildEmailText(p: QuotationPayload): string {
 function rowHtml(label: string, value: string): string {
   return (
     `<tr>` +
-    `<td style="width:220px;padding:7px 0;vertical-align:top;color:#64756b;font-size:13px;line-height:1.5;">${escapeHtml(label)}</td>` +
+    `<td style="width:220px;padding:7px 0;vertical-align:top;color:#4e6257;font-size:13px;line-height:1.5;">${escapeHtml(label)}</td>` +
     `<td style="padding:7px 0;vertical-align:top;color:#131b16;font-size:14px;line-height:1.5;font-weight:600;">${escapeHtml(value)}</td>` +
     `</tr>`
   );
@@ -148,12 +148,12 @@ ${rows}
       </td>
     </tr>
     <tr>
-      <td style="padding:22px 34px 8px;font-size:12px;color:#64756b;line-height:1.7;">
+      <td style="padding:22px 34px 8px;font-size:12px;color:#4e6257;line-height:1.7;">
         This request was submitted through the Bestcor website quotation form at <b>bestcor.ph</b>.
       </td>
     </tr>
     <tr>
-      <td style="background:#f0f3f1;padding:18px 34px;font-size:11px;color:#7c8b82;line-height:1.7;">
+      <td style="background:#f0f3f1;padding:18px 34px;font-size:11px;color:#4e6257;line-height:1.7;">
         Built on integrity. Driven by quality.<br/>
         ${escapeHtml(site.legalName)} · San Jose del Monte, Bulacan, Philippines · ${escapeHtml(site.email)}
       </td>
