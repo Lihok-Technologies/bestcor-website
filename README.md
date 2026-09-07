@@ -85,11 +85,11 @@ environment variables, never in git:
 | `NEXT_PUBLIC_SITE_URL` | on Render | Canonical/OG/sitemap base URL (`https://bestcor-website.onrender.com`) |
 | `RESEND_API_KEY` | for email delivery | Server-side Resend key for quotation emails (never client-side) |
 | `BESTCOR_QUOTATION_FROM_EMAIL` | with the key | Verified sender; interim `onboarding@resend.dev` allowed **only** to the email registered on the Resend account |
-| `BESTCOR_QUOTATION_TO_EMAIL` | optional | Recipient; defaults to `bestcorofficial2005@gmail.com` |
+| `BESTCOR_QUOTATION_TO_EMAIL` | optional | Recipient; defaults to `info@bestcor.ph` |
 
 Without the Resend variables the form stays honest: nothing is sent, the UI
 shows "delivery not enabled", and a pre-filled email fallback to
-`bestcorofficial2005@gmail.com` is offered. The site never claims a
+`info@bestcor.ph` is offered. The site never claims a
 submission was delivered unless the provider accepted the message.
 
 No keys/passwords/secrets are hardcoded anywhere.
@@ -105,7 +105,7 @@ No keys/passwords/secrets are hardcoded anywhere.
 
 ## 9. Quotation architecture
 
-Visitor → `POST /api/quotation` (Next.js server) → honeypot + validation + per-IP rate limit → **Resend** → `bestcorofficial2005@gmail.com` → honest response. Response semantics:
+Visitor → `POST /api/quotation` (Next.js server) → honeypot + validation + per-IP rate limit → **Resend** → `info@bestcor.ph` → honest response. Response semantics:
 
 - No `RESEND_API_KEY` → `503 { code: "UNCONFIGURED" }` → UI shows an amber notice + pre-filled mailto button (nothing faked).
 - Key set + provider 2xx → `200 { ok: true }` → UI shows "Sent to Bestcor".
@@ -136,7 +136,7 @@ Nothing below is published on the site yet:
 
 1. Exact street address (only "San Jose del Monte, Bulacan, Philippines" is shown).
 2. Official phone / mobile numbers.
-3. Confirmation that `bestcorofficial2005@gmail.com` remains the preferred inquiry email.
+3. ~~Confirm the preferred inquiry email~~ — resolved: the public inquiry email is now `info@bestcor.ph`.
 4. PCAB / ISO / utility accreditations and licenses.
 5. Client names, project names, locations, values and case studies.
 6. Precise per-photograph descriptions (current alt text is capability-level and conservative).

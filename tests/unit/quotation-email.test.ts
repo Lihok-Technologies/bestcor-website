@@ -23,7 +23,7 @@ const PAYLOAD: QuotationPayload = {
 const CONFIG: EmailConfig = {
   apiKey: "re_test-key",
   from: "Bestcor Website <onboarding@resend.dev>",
-  to: "bestcorofficial2005@gmail.com",
+  to: "info@bestcor.ph",
 };
 
 function jsonResponse(status: number, body: unknown) {

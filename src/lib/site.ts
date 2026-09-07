@@ -25,7 +25,7 @@ export const site = {
   /** Verified municipality only — no street address published */
   location: "San Jose del Monte, Bulacan, Philippines",
   /** Verified published email */
-  email: "bestcorofficial2005@gmail.com",
+  email: "info@bestcor.ph",
   /** Verified Facebook page */
   facebookUrl: "https://www.facebook.com/profile.php?id=61562975085361",
   facebookHandle: "Bestcor Phils., Inc. on Facebook",
