@@ -10,14 +10,18 @@ import { site } from "@/lib/site";
 export function LogoMark({
   size = 56,
   className,
+  decorative = false,
 }: {
   size?: number;
   className?: string;
+  /** Mark the image decorative when adjacent visible text already names the link. */
+  decorative?: boolean;
 }) {
   return (
     <Image
       src="/images/bestcor-logo.png"
-      alt="Bestcor Phils., Inc. logo"
+      alt={decorative ? "" : "Bestcor Phils., Inc. logo"}
+      aria-hidden={decorative || undefined}
       width={size * 2}
       height={size * 2}
       className={cn("h-auto w-auto shrink-0", className)}
@@ -72,10 +76,9 @@ export function BrandLink({ className }: { className?: string }) {
   return (
     <Link
       href="/"
-      aria-label={`${site.legalName} — home`}
       className={cn("flex items-center gap-3 rounded-sm", className)}
     >
-      <LogoMark size={52} />
+      <LogoMark size={52} decorative />
       <WordmarkOnly className="hidden min-[420px]:flex" />
     </Link>
   );
