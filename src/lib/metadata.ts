@@ -6,7 +6,7 @@ import type { Metadata } from "next";
  */
 export const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ??
-  "https://bestcor-website.onrender.com";
+  "https://bestcor.ph";
 
 const DEFAULT_DESCRIPTION =
   "Bestcor Phils., Inc. — civil–electromechanical contractor in San Jose del Monte, Bulacan. Preventive maintenance, on-site repairs, testing & diagnostics, electrical installation and pole-line works since November 2005.";
