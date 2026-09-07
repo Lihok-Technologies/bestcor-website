@@ -13,7 +13,7 @@ import urllib.request
 import urllib.error
 from html.parser import HTMLParser
 
-BASE = (sys.argv[1] if len(sys.argv) > 1 else "https://bestcor-website.onrender.com").rstrip("/")
+BASE = (sys.argv[1] if len(sys.argv) > 1 else "https://bestcor.ph").rstrip("/")
 
 ROUTES = ["/", "/about", "/services", "/services/preventive-maintenance",
           "/services/testing-diagnostics", "/projects", "/safety-quality",

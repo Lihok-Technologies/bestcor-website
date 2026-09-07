@@ -4,7 +4,7 @@ Official corporate website for **Bestcor Phils., Inc.**, a civil–electromechan
 
 **Built on integrity. Driven by quality.**
 
-Live: `https://bestcor-website.onrender.com` (Render) · Repository: `Lihok-Technologies/bestcor-website`
+Live: `https://bestcor.ph` (Render service: `bestcor-website.onrender.com`) · Repository: `Lihok-Technologies/bestcor-website`
 
 ---
 
@@ -82,7 +82,7 @@ environment variables, never in git:
 
 | Variable | Required | Purpose |
 |---|---|---|
-| `NEXT_PUBLIC_SITE_URL` | on Render | Canonical/OG/sitemap base URL (`https://bestcor-website.onrender.com`) |
+| `NEXT_PUBLIC_SITE_URL` | on Render | Canonical/OG/sitemap base URL (`https://bestcor.ph`) |
 | `RESEND_API_KEY` | for email delivery | Server-side Resend key for quotation emails (never client-side) |
 | `BESTCOR_QUOTATION_FROM_EMAIL` | with the key | Verified sender; interim `onboarding@resend.dev` allowed **only** to the email registered on the Resend account |
 | `BESTCOR_QUOTATION_TO_EMAIL` | optional | Recipient; defaults to `info@bestcor.ph` |
@@ -127,7 +127,7 @@ Standalone **Web Service** (not a static site — the quotation API needs a Node
 - Build: `npm ci && npm run build`
 - Start: `npm start`
 - Node version: 22 LTS (or current default)
-- Env: `NEXT_PUBLIC_SITE_URL=https://bestcor-website.onrender.com`
+- Env: `NEXT_PUBLIC_SITE_URL=https://bestcor.ph`
 - Auto-deploy on push to `main`
 
 ## 12. Outstanding factual confirmations (awaiting Bestcor)
