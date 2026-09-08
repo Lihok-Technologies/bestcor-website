@@ -125,7 +125,9 @@ export default function ProjectsPage() {
               </Link>
             </div>
 
-            <ProjectRegister rows={caseStudies} />
+            <div className="min-w-0">
+              <ProjectRegister rows={caseStudies} />
+            </div>
           </div>
 
           <Reveal className="mt-10 grid gap-6 border border-border bg-card p-6 md:grid-cols-[0.7fr_1.3fr] md:gap-10 md:p-8">

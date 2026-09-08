@@ -19,7 +19,7 @@ export function ProjectRegister({ rows }: { rows: CaseStudy[] }) {
   const chips = ["All", ...projectCategories];
 
   return (
-    <div>
+    <div className="w-full min-w-0">
       <div
         role="group"
         aria-label="Filter completed projects by category"
