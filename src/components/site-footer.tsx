@@ -13,7 +13,7 @@ export function SiteFooter() {
       <div className="wrap grid gap-12 py-16 md:grid-cols-2 lg:grid-cols-[1.3fr_0.8fr_1fr_1fr] lg:gap-8">
         {/* Brand */}
         <div>
-          <LogoMark size={88} />
+          <LogoMark size={104} />
           <p className="display mt-5 text-[1.4rem] text-foreground">
             Bestcor <span className="text-brand-bright">Phils., Inc.</span>
           </p>
