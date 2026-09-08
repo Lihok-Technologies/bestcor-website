@@ -43,7 +43,7 @@ const pillars = [
   {
     id: "expertise",
     title: "Expertise",
-    body: "Our people work across electrical, electromechanical and civil scope, applying technical discipline to problems on the ground.",
+    body: "Our people work across electrical, electromechanical, mechanical and civil scope, applying technical discipline to problems on the ground.",
   },
 ];
 
@@ -88,13 +88,14 @@ export default function AboutPage() {
                 Bestcor performs preventive maintenance, on-site repairs,
                 electrical testing and diagnostics, and the supply,
                 installation and construction of electrical distribution
-                facilities. Our crews also carry out distribution component
+                facilities. The same crews carry out mechanical services on
+                pumps, motors and generator sets, plus distribution component
                 works and transmission and pole-line construction.
               </p>
               <p>
                 The result is a single contractor a facility can rely on for
-                the day-to-day care of its electrical assets — and for the
-                construction work that extends them.
+                the day-to-day care of its electrical and mechanical assets —
+                and for the construction work that extends them.
               </p>
             </div>
             <div className="mt-8 grid gap-3 sm:grid-cols-2">
@@ -221,7 +222,7 @@ export default function AboutPage() {
           <div>
             <p className="eyebrow">Work with Bestcor</p>
             <p className="mt-4 max-w-xl text-[1rem] leading-relaxed text-muted-foreground">
-              Have an electrical, electromechanical or civil scope in mind?
+              Have an electrical, mechanical, electromechanical or civil scope in mind?
               Send the details — our team will review and come back with next
               steps.
             </p>

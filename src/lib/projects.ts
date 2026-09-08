@@ -61,3 +61,36 @@ export const ongoingWorks = [
   "Generator house, bund walls and generator day-tank fabrication",
   "Steel frames for structures",
 ];
+
+
+/** Display categories used across the site for project rows. */
+export const projectCategories = [
+  "Civil Works",
+  "Pole-Line & Distribution",
+  "Water Infrastructure",
+  "Distribution / Service Entrance",
+] as const;
+
+/** Map a register capability family to its display category. */
+export function projectCategory(c: Pick<CaseStudy, "capability">): string {
+  switch (c.capability) {
+    case "Utility & pole-line works":
+      return "Pole-Line & Distribution";
+    case "Mechanical services":
+      return "Water Infrastructure";
+    case "Electrical maintenance":
+      return "Distribution / Service Entrance";
+    default:
+      return "Civil Works";
+  }
+}
+
+/** Representative projects surfaced on the homepage and Projects page. */
+export const featuredProjectSlugs = [
+  "steelpole-san-juan-2012",
+  "steelpole-sjdm-2020",
+  "civil-works-north-qc-2019",
+  "delos-santos-ps-upgrade-2021",
+  "overhead-tank-demolition-2023",
+  "linebooster-service-entrances",
+] as const;

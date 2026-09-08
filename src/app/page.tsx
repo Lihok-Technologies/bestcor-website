@@ -5,14 +5,17 @@ import {
   ZapIcon,
   CogIcon,
   HardHatIcon,
-  ShieldCheckIcon,
-  CalendarClockIcon,
+  WrenchIcon,
+  ActivityIcon,
+  PlugZapIcon,
   ArrowRightIcon,
   MapPinIcon,
+  CalendarCheckIcon,
 } from "lucide-react";
-import { site, capabilityStrip } from "@/lib/site";
+import { site, companyHistory, capabilityStrip } from "@/lib/site";
 import { services } from "@/lib/services";
 import { curated } from "@/lib/images";
+import { caseStudies, featuredProjectSlugs, projectCategory, type CaseStudy } from "@/lib/projects";
 import { ServiceCard } from "@/components/service-card";
 import { SectionHeading } from "@/components/section-heading";
 import { CtaBand } from "@/components/cta-band";
@@ -23,12 +26,14 @@ export const metadata: Metadata = {
   alternates: { canonical: "/" },
 };
 
-const stripIcons = [
-  ZapIcon,
-  CogIcon,
-  HardHatIcon,
-  ShieldCheckIcon,
-  CalendarClockIcon,
+/** Icons for the six capability families (order matches site.capabilityStrip). */
+const capabilityIcons = [
+  ZapIcon, // Electrical Services
+  CogIcon, // Electromechanical Works
+  WrenchIcon, // Mechanical Services
+  HardHatIcon, // Civil Works
+  ActivityIcon, // Testing & Maintenance
+  PlugZapIcon, // Pole-Line & Distribution Works
 ] as const;
 
 const workTiles = [
@@ -40,6 +45,10 @@ const workTiles = [
 
 const homepageHero = curated["hero-home"];
 
+const selectedWorks = featuredProjectSlugs
+  .map((slug) => caseStudies.find((c) => c.slug === slug))
+  .filter((c): c is CaseStudy => Boolean(c));
+
 function OrganizationSchema() {
   const json = {
     "@context": "https://schema.org",
@@ -49,11 +58,13 @@ function OrganizationSchema() {
     email: site.email,
     slogan: site.tagline,
     description:
-      "Civil–electromechanical contractor operating since November 2005.",
+      "Civil–electromechanical contractor operating since November 2005 — electrical, mechanical, electromechanical and civil services for utility, industrial and infrastructure applications.",
     address: {
       "@type": "PostalAddress",
-      addressLocality: "San Jose del Monte",
+      streetAddress: "8985 Emerald St., Pecsonville Subdivision, Brgy. Tungkong Mangga",
+      addressLocality: "City of San Jose del Monte",
       addressRegion: "Bulacan",
+      postalCode: "3023",
       addressCountry: "PH",
     },
     sameAs: [site.facebookUrl],
@@ -67,7 +78,6 @@ function OrganizationSchema() {
 }
 
 export default function HomePage() {
-  const hero = homepageHero;
   return (
     <>
       <OrganizationSchema />
@@ -75,15 +85,14 @@ export default function HomePage() {
       {/* ============================= HERO ============================= */}
       <section aria-label="Introduction" className="relative overflow-hidden">
         <Image
-          src={hero.src}
+          src={homepageHero.src}
           alt=""
-          width={hero.width}
-          height={hero.height}
+          width={homepageHero.width}
+          height={homepageHero.height}
           priority
           sizes="100vw"
           className="absolute inset-0 size-full object-cover"
         />
-        {/* legibility + brand treatment overlays */}
         <div
           aria-hidden="true"
           className="absolute inset-0"
@@ -94,7 +103,9 @@ export default function HomePage() {
         />
         <div className="wrap relative flex min-h-[86svh] flex-col justify-end pb-16 pt-40 md:min-h-[82svh] md:pb-20 lg:min-h-[86vh]">
           <Reveal>
-            <p className="eyebrow !text-brand-bright/90">San Jose del Monte, Bulacan · Operating since November 2005</p>
+            <p className="eyebrow !text-brand-bright/90">
+              Bestcor Phils., Inc. · San Jose del Monte, Bulacan · Operating since November 2005
+            </p>
           </Reveal>
           <Reveal delay={0.08}>
             <h1 className="display mt-7 text-[2.9rem] text-white sm:text-[4.4rem] lg:text-[6.2rem] xl:text-[6.9rem]">
@@ -108,54 +119,46 @@ export default function HomePage() {
           </Reveal>
           <Reveal delay={0.16}>
             <p className="mt-7 max-w-xl text-[1.05rem] leading-relaxed text-white/85 lg:text-[1.2rem]">
-              {site.supportingPosition} A civil–electromechanical contractor
-              delivering preventive maintenance, repairs, testing and
-              electrical construction work — safely and on schedule.
+              A civil–electromechanical contractor: electrical, mechanical,
+              electromechanical and civil services for utility, industrial and
+              infrastructure applications — preventive maintenance, field
+              repairs, testing and diagnostics, and distribution and pole-line
+              construction.
             </p>
           </Reveal>
           <Reveal delay={0.24}>
             <div className="mt-10 flex flex-col gap-4 sm:flex-row">
               <Link href="/contact" className="btn btn--red text-[0.9375rem]">
-                Request a Quotation
+                Discuss Your Project
                 <ArrowRightIcon className="size-4" aria-hidden="true" />
               </Link>
               <Link
-                href="/services"
+                href="/projects"
                 className="btn btn--ghost !border-white/45 text-[0.9375rem] text-white"
               >
-                Explore Our Services
+                See Completed Works
               </Link>
             </div>
           </Reveal>
         </div>
-        <p className="sr-only">
-          {site.legalName} — {site.descriptor}.
-        </p>
       </section>
 
-      {/* ======================== CAPABILITY STRIP ======================= */}
-      <section
-        aria-label="Capabilities"
-        className="border-b border-border bg-canvas-raised"
-      >
-        <ul className="grid grid-cols-2 gap-px overflow-hidden border-x border-border bg-border/70 md:grid-cols-3 lg:grid-cols-5">
+      {/* ===================== CAPABILITY FAMILIES ===================== */}
+      <section aria-label="Capabilities" className="border-b border-border bg-canvas-raised">
+        <ul className="grid grid-cols-2 gap-px overflow-hidden border-x border-border bg-border/70 sm:grid-cols-3 lg:grid-cols-6">
           {capabilityStrip.map((c, i) => {
-            const Icon = stripIcons[i];
+            const Icon = capabilityIcons[i];
             return (
               <li
                 key={c.title}
-                className="flex min-h-24 items-center gap-3.5 bg-canvas-raised px-5 py-5 sm:min-h-28 lg:px-6"
+                className="flex min-h-28 flex-col justify-center gap-2.5 bg-canvas-raised px-5 py-6 lg:min-h-32"
               >
-                <Icon
-                  className="size-6 shrink-0 text-brand"
-                  strokeWidth={1.6}
-                  aria-hidden="true"
-                />
+                <Icon className="size-6 text-brand" strokeWidth={1.6} aria-hidden="true" />
                 <span>
-                  <span className="display block text-[0.9375rem] leading-tight text-foreground">
+                  <span className="display block text-[0.875rem] leading-tight text-foreground lg:text-[0.9375rem]">
                     {c.title}
                   </span>
-                  <span className="mt-1 hidden max-w-40 text-[0.6875rem] leading-snug text-muted-foreground md:block">
+                  <span className="mt-1.5 block text-[0.6875rem] leading-snug text-muted-foreground">
                     {c.note}
                   </span>
                 </span>
@@ -165,14 +168,104 @@ export default function HomePage() {
         </ul>
       </section>
 
+      {/* ==================== EXPERIENCE / HISTORY SIGNAL ==================== */}
+      <section aria-label="Company history at a glance" className="border-b border-border bg-background">
+        <div className="wrap grid items-center gap-10 py-16 md:grid-cols-[0.85fr_1.15fr] md:py-20 lg:gap-16">
+          <div>
+            <p className="eyebrow">Established experience</p>
+            <h2 className="display mt-4 text-[2rem] text-foreground sm:text-[2.5rem]">
+              A three-decade electrical lineage — one contracting standard
+            </h2>
+            <p className="mt-5 max-w-xl text-[0.95rem] leading-relaxed text-muted-foreground">
+              Bestcor&apos;s company profile traces its roots to 1987 — from
+              RCTC&apos;s electrical-contracting start, through the formation
+              of BESTCOR in 2002, to Bestcor Phils., Inc. today.
+            </p>
+            <Link
+              href="/about"
+              className="mt-7 inline-flex items-center gap-2 border border-border px-6 py-3.5 text-[0.8125rem] font-bold tracking-[0.1em] text-foreground uppercase transition hover:border-brand/60 hover:text-brand-bright"
+            >
+              Read the history <ArrowRightIcon className="size-4" aria-hidden="true" />
+            </Link>
+          </div>
+          <ol className="grid gap-px border border-border bg-border/60 sm:grid-cols-3">
+            {companyHistory.map((m) => (
+              <li key={m.year} className="bg-card p-6 lg:p-7">
+                <p className="display text-[1.9rem] leading-none text-brand-bright">{m.year}</p>
+                <h3 className="mt-4 text-[0.9375rem] font-bold leading-snug text-foreground">
+                  {m.title}
+                </h3>
+                <p className="mt-3 text-[0.8125rem] leading-relaxed text-muted-foreground">
+                  {m.body}
+                </p>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      {/* ==================== SELECTED COMPLETED WORKS ==================== */}
+      <section aria-labelledby="selected-works-heading" className="border-b border-border bg-canvas-deep">
+        <div className="wrap py-20 md:py-24">
+          <SectionHeading
+            id="selected-works-heading"
+            kicker="Selected completed works"
+            title="Documented experience — not decoration"
+            intro="A representative slice of the completed works in Bestcor's own company profile. Each entry states only what the profile states."
+          />
+          <ul className="grid gap-px border border-border bg-border/60 lg:grid-cols-2">
+            {selectedWorks.map((c, i) => (
+              <li
+                key={c.slug}
+                className="group bg-card p-6 transition-colors duration-300 hover:bg-canvas-raised md:p-7"
+              >
+                <div className="flex items-baseline justify-between gap-4">
+                  <span className="font-mono text-[0.6875rem] tracking-[0.22em] text-signal-bright">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <span className="text-[0.625rem] font-bold tracking-[0.16em] text-brand-bright uppercase">
+                    {projectCategory(c)}
+                  </span>
+                </div>
+                <h3 className="display mt-4 text-[1.2rem] leading-tight text-foreground lg:text-[1.3rem]">
+                  {c.title}
+                </h3>
+                <p className="mt-3 flex flex-wrap gap-x-5 gap-y-1.5 text-[0.8125rem] text-muted-foreground">
+                  {c.client ? <span>{c.client}</span> : null}
+                  {c.location ? (
+                    <span className="inline-flex items-center gap-1.5">
+                      <MapPinIcon className="size-3.5" aria-hidden="true" /> {c.location}
+                    </span>
+                  ) : null}
+                  {c.year ? <span>{c.year}</span> : null}
+                </p>
+                <p className="mt-3 text-[0.875rem] leading-relaxed text-foreground/75">{c.summary}</p>
+              </li>
+            ))}
+          </ul>
+          <Reveal className="mt-10 flex flex-col items-center justify-between gap-5 sm:flex-row">
+            <p className="max-w-lg text-[0.875rem] leading-relaxed text-muted-foreground">
+              The full completed civil-works register and the field photography
+              live on the Our Work page.
+            </p>
+            <Link
+              href="/projects"
+              className="inline-flex items-center gap-2 border border-border px-6 py-3.5 text-[0.8125rem] font-bold tracking-[0.1em] text-foreground uppercase transition hover:border-brand/60 hover:text-brand-bright"
+            >
+              Explore our work <ArrowRightIcon className="size-4" aria-hidden="true" />
+            </Link>
+          </Reveal>
+        </div>
+      </section>
+
       {/* ============================ SERVICES =========================== */}
       <section aria-labelledby="services-heading" className="border-b border-border bg-background">
         <div className="wrap py-20 md:py-28">
           <SectionHeading
             id="services-heading"
             kicker="Our services"
-            title="A complete range of electrical, electromechanical & civil works"
-            intro="From preventive maintenance and on-site repairs to testing, diagnostics, distribution and pole-line construction — Bestcor delivers disciplined field execution."
+            title="Civil, electrical, electromechanical & mechanical services"
+            intro="Seven service lines, delivered with the same field discipline — from scheduled preventive maintenance to distribution and pole-line construction."
           />
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">
             {services.map((service, i) => (
@@ -198,15 +291,9 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ============================ OUR WORK =========================== */}
-      <section aria-labelledby="work-heading" className="border-b border-border bg-canvas-deep">
-        <div className="wrap py-20 md:py-28">
-          <SectionHeading
-            id="work-heading"
-            kicker="Our work"
-            title="Real work. Real experience."
-            intro="Photographs from Bestcor's own field activity — real crews, real equipment, real discipline. Client and project details are published only once Bestcor confirms them."
-          />
+      {/* ========================= FIELD PHOTOGRAPHY ========================= */}
+      <section aria-label="Field photography" className="border-b border-border bg-canvas-deep">
+        <div className="wrap py-14 md:py-16">
           <div className="grid grid-cols-2 gap-3 lg:grid-cols-4 lg:gap-4">
             {workTiles.map((asset, i) => (
               <ImageReveal key={asset.src} delay={i * 0.06}>
@@ -229,18 +316,6 @@ export default function HomePage() {
               </ImageReveal>
             ))}
           </div>
-          <Reveal className="mt-10 flex flex-wrap items-center justify-between gap-5">
-            <p className="max-w-md text-[0.875rem] leading-relaxed text-muted-foreground">
-              Maintenance, testing, distribution equipment, field installation
-              and utility line work — captured as it happens.
-            </p>
-            <Link
-              href="/projects"
-              className="inline-flex items-center gap-2 border border-border px-6 py-3.5 text-[0.8125rem] font-bold tracking-[0.1em] text-foreground uppercase transition hover:border-brand/60 hover:text-brand-bright"
-            >
-              Explore our work <ArrowRightIcon className="size-4" aria-hidden="true" />
-            </Link>
-          </Reveal>
         </div>
       </section>
 
@@ -256,15 +331,16 @@ export default function HomePage() {
             />
             <div className="space-y-5 text-[0.95rem] leading-relaxed text-muted-foreground">
               <p>
-                Bestcor Phils., Inc. delivers electrical, electromechanical
-                and civil work for facilities that depend on reliable power —
-                from preventive maintenance and on-site repairs to testing,
-                diagnostics and distribution construction.
+                Bestcor Phils., Inc. delivers electrical, electromechanical,
+                mechanical and civil work for facilities that depend on
+                reliable power — from preventive maintenance and on-site
+                repairs to testing, diagnostics and distribution construction.
               </p>
               <p>
                 The company has operated from San Jose del Monte, Bulacan
-                since November 2005. Work is executed with the same standard
-                on every engagement: planned properly, performed safely, and
+                since November 2005, tracing its electrical-contracting roots
+                to RCTC in 1987. Work is executed with the same standard on
+                every engagement: planned properly, performed safely, and
                 finished to a quality we are prepared to stand behind.
               </p>
             </div>
@@ -300,11 +376,11 @@ export default function HomePage() {
                 <figcaption className="sr-only">{curated["about-crew"].alt}</figcaption>
               </figure>
             </ImageReveal>
-            <div
-              aria-hidden="true"
-              className="absolute -bottom-5 -left-5 hidden border border-border bg-card px-6 py-5 shadow-2xl sm:block lg:-left-8"
-            >
-              <p className="display text-[1.6rem] leading-none text-brand-bright">2005</p>
+            <div className="absolute -bottom-5 -left-5 hidden border border-border bg-card px-6 py-5 shadow-2xl sm:block lg:-left-8">
+              <p className="flex items-center gap-2 font-mono text-[0.6875rem] tracking-[0.18em] text-muted-foreground uppercase">
+                <CalendarCheckIcon className="size-4 text-brand-bright" aria-hidden="true" />
+                Operating since November 2005
+              </p>
               <p className="mt-2 flex items-center gap-1.5 text-[0.6875rem] font-semibold tracking-[0.18em] text-muted-foreground uppercase">
                 <MapPinIcon className="size-3.5" /> San Jose del Monte, Bulacan
               </p>
@@ -318,15 +394,7 @@ export default function HomePage() {
         <div
           aria-hidden="true"
           className="absolute inset-0"
-          style={{
-            background:
-              "linear-gradient(120deg, #0a1f15 0%, #071410 45%, #040a08 100%)",
-          }}
-        />
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute -top-24 right-0 size-96 rounded-full opacity-60 blur-3xl"
-          style={{ background: "rgba(79,175,67,0.16)" }}
+          style={{ background: "linear-gradient(120deg, #0a1f15 0%, #071410 45%, #040a08 100%)" }}
         />
         <div className="wrap relative py-20 md:py-24">
           <div className="grid items-end gap-10 lg:grid-cols-[1.2fr_0.8fr]">
@@ -344,10 +412,7 @@ export default function HomePage() {
                 standard that keeps equipment reliable and people safe.
               </p>
             </div>
-            <Link
-              href="/safety-quality"
-              className="btn btn--green justify-self-start lg:justify-self-end"
-            >
+            <Link href="/safety-quality" className="btn btn--green justify-self-start lg:justify-self-end">
               How we work <ArrowRightIcon className="size-4" aria-hidden="true" />
             </Link>
           </div>
@@ -371,7 +436,10 @@ export default function HomePage() {
       </section>
 
       {/* ============================== CTA ============================== */}
-      <CtaBand />
+      <CtaBand
+        title="Let's discuss your next project."
+        lead="Maintenance, repairs, testing, or construction and installation scope — send the details and Bestcor will follow up with a clear path forward."
+      />
     </>
   );
 }
