@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRightIcon, ImagesIcon, MapPinIcon } from "lucide-react";
-import { gallery } from "@/lib/images";
+import { gallery, sourceLabel } from "@/lib/images";
 import {
   caseStudies,
   featuredProjectSlugs,
@@ -43,7 +43,7 @@ const featured = featuredProjectSlugs
   .filter((c): c is CaseStudy => Boolean(c));
 
 /** Photographs referenced by export index (0-based into `gallery`). */
-const selected = [0, 9, 10, 12, 15, 17, 20, 21, 24, 27, 28, 29, 30, 31];
+const selected = [0, 1, 2, 3, 5, 6, 8, 9, 10, 12, 14, 17];
 const shown = selected.map((i) => gallery[i]);
 
 export default function ProjectsPage() {
@@ -192,7 +192,7 @@ export default function ProjectsPage() {
                     {shown[0].chip}
                   </span>
                   <span className="font-mono text-[0.6875rem] text-white/60">
-                    {shown[0].source.replace("fb_", "#")}
+                    {sourceLabel(shown[0])}
                   </span>
                 </figcaption>
               </figure>
@@ -217,7 +217,7 @@ export default function ProjectsPage() {
                       {asset.chip}
                     </span>
                     <span className="font-mono text-[0.625rem] text-white/60">
-                      {asset.source.replace("fb_", "#")}
+                      {sourceLabel(asset)}
                     </span>
                   </figcaption>
                 </figure>

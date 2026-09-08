@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { gallery } from "@/lib/images";
-import { site } from "@/lib/site";
+import { gallery, sourceLabel } from "@/lib/images";
 import { buildMetadata } from "@/lib/metadata";
 import { PageHero } from "@/components/page-hero";
 import { CtaBand } from "@/components/cta-band";
@@ -24,7 +23,7 @@ export default function GalleryPage() {
             Field photographs, <span className="text-brand-bright">as they happened</span>
           </>
         }
-        lead={`All ${gallery.length} real photographs exported from ${site.legalName}'s own Facebook page, presented without invented captions.`}
+        lead={`A curated set of ${gallery.length} authentic Bestcor field photographs — original images from the company's own profile presentation, presented without invented captions.`}
       />
 
       <section aria-label="Photograph gallery" className="border-b border-border bg-background">
@@ -47,7 +46,7 @@ export default function GalleryPage() {
                       {asset.chip}
                     </span>
                     <span className="font-mono text-[0.5625rem] text-white/55">
-                      {asset.source.replace("fb_", "#")}
+                      {sourceLabel(asset)}
                     </span>
                   </figcaption>
                 </figure>
@@ -55,9 +54,9 @@ export default function GalleryPage() {
             ))}
           </div>
           <p className="mt-8 text-[0.8125rem] leading-relaxed text-muted-foreground">
-            Source: Bestcor&apos;s public Facebook page. Photography is used
-            without claims about clients, project titles, locations or
-            timelines — those await Bestcor confirmation.
+            Photography is used without claims about clients, project
+            titles, locations or timelines. Originals are preserved in the
+            project&apos;s source assets.
           </p>
         </div>
       </section>
