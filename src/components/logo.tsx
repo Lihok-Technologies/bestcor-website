@@ -85,7 +85,7 @@ export function BrandLink({ className }: { className?: string }) {
       href="/"
       className={cn("flex items-center gap-3 rounded-sm", className)}
     >
-      <LogoMark size={48} decorative />
+      <LogoMark size={52} decorative />
       <WordmarkOnly className="hidden min-[420px]:flex" />
     </Link>
   );
