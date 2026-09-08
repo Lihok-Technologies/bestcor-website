@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { MenuIcon } from "lucide-react";
+import { ThemeToggle } from "@/components/theme-toggle";
 import { cn } from "@/lib/utils";
 import { site, mainNav, headerCta } from "@/lib/site";
 import { BrandLink } from "@/components/logo";
@@ -63,9 +64,10 @@ export function SiteHeader() {
           ))}
         </nav>
 
+        <ThemeToggle className="hidden lg:inline-flex" />
         <Link
           href={headerCta.href}
-          className="btn btn--red ml-auto hidden !min-h-12 !px-6 text-[0.8125rem] uppercase tracking-[0.06em] lg:inline-flex"
+          className="btn btn--red hidden !min-h-12 !px-6 text-[0.8125rem] uppercase tracking-[0.06em] lg:inline-flex"
         >
           {headerCta.label}
         </Link>
@@ -108,6 +110,12 @@ export function SiteHeader() {
               ))}
             </nav>
             <SheetFooter className="gap-3 border-t border-border/70 p-5">
+              <div className="flex items-center justify-between">
+                <span className="text-[0.6875rem] font-bold tracking-[0.18em] text-muted-foreground uppercase">
+                  Theme
+                </span>
+                <ThemeToggle />
+              </div>
               <SheetClose
                 render={
                   <Link
