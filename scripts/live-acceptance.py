@@ -91,8 +91,8 @@ def main():
             failures.append(asset)
 
     # static assets
-    for asset in ["/images/hero-home.webp", "/images/bestcor-logo.png", "/images/og-home.jpg",
-                  "/icon.png", "/apple-icon.png"]:
+    for asset in ["/images/hero-home.webp", "/images/og-home.jpg", "/brand/bestcor-logo.svg",
+                  "/brand/bestcor-logo-original.svg", "/icon.png", "/apple-icon.png"]:
         status, _ = get(BASE + asset)
         ok = status == 200
         print(f"{'PASS' if ok else 'FAIL'} asset {asset:<38} http={status}")
