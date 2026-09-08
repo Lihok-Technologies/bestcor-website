@@ -271,13 +271,13 @@
   }
 
   .btn--ghost {
-    border-color: rgba(255, 255, 255, 0.4);
-    background: rgba(255, 255, 255, 0.02);
+    border-color: color-mix(in srgb, var(--foreground) 38%, transparent);
+    background: color-mix(in srgb, var(--foreground) 3%, transparent);
     color: var(--foreground);
   }
   .btn--ghost:hover {
-    border-color: rgba(255, 255, 255, 0.75);
-    background: rgba(255, 255, 255, 0.06);
+    border-color: color-mix(in srgb, var(--foreground) 72%, transparent);
+    background: color-mix(in srgb, var(--foreground) 7%, transparent);
   }
 
   .btn--green {
@@ -295,7 +295,7 @@
     font-weight: 600;
     letter-spacing: 0.06em;
     text-transform: uppercase;
-    color: rgba(238, 244, 239, 0.82);
+    color: var(--muted-foreground);
     padding-block: 0.375rem;
     transition: color 160ms ease;
   }
@@ -353,4 +353,67 @@
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+/* ------------------------------------------------------------------ */
+/* LIGHT THEME — deliberate industrial off-white variant              */
+/* ------------------------------------------------------------------ */
+html {
+  color-scheme: dark;
+}
+html.light {
+  color-scheme: light;
+}
+
+html.light {
+  --background: #eef1eb;
+  --foreground: #18221b;
+
+  --canvas-deep: #e3e8e0;
+  --canvas-raised: #f4f6f1;
+
+  --card: #fbfcf8;
+  --card-foreground: #18221b;
+  --popover: #ffffff;
+  --popover-foreground: #18221b;
+
+  /* signal red — darker for AA on light */
+  --signal: #c2241b;
+  --signal-bright: #a92018;
+  --signal-deep: #8f1510;
+  --primary: #c2241b;
+  --primary-foreground: #ffffff;
+
+  /* brand green — darker for AA on light */
+  --brand: #3c8f35;
+  --brand-bright: #2f7d2e;
+  --brand-deep: #245f27;
+
+  --secondary: #dfe5dc;
+  --secondary-foreground: #25332a;
+  --muted: #e2e7e0;
+  --muted-foreground: #4c5b52;
+  --accent: #dce8d5;
+  --accent-foreground: #24502a;
+  --destructive: #b3261e;
+  --destructive-foreground: #ffffff;
+
+  --border: rgba(23, 45, 34, 0.16);
+  --input: rgba(23, 45, 34, 0.24);
+  --ring: #2f7d2e;
+
+  --chart-1: #3c8f35;
+  --chart-2: #c2241b;
+  --chart-3: #2f7d2e;
+  --chart-4: #4c5b52;
+  --chart-5: #6b9b68;
+
+  --sidebar: #f4f6f1;
+  --sidebar-foreground: #18221b;
+  --sidebar-primary: #c2241b;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #dce8d5;
+  --sidebar-accent-foreground: #24502a;
+  --sidebar-border: rgba(23, 45, 34, 0.16);
+  --sidebar-ring: #2f7d2e;
 }

@@ -27,3 +27,14 @@ test("6m. Mobile menu opens, navigates and closes", async ({ page }) => {
   await page.getByRole("button", { name: "Close" }).click();
   await expect(page.getByRole("dialog", { name: "Menu" })).toHaveCount(0);
 });
+
+test("mobile menu exposes the theme selector", async ({ page }) => {
+  await page.goto("/");
+  await page.getByRole("button", { name: "Open menu" }).click();
+  const dialog = page.getByRole("dialog", { name: "Menu" });
+  await expect(dialog).toBeVisible();
+  const group = dialog.getByRole("group", { name: "Color theme" });
+  await expect(group).toBeVisible();
+  await dialog.getByRole("button", { name: "Light theme" }).click();
+  await expect(page.locator("html")).toHaveClass(/light/);
+});
