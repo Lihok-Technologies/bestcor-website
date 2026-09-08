@@ -9,7 +9,7 @@ export const SITE_URL =
   "https://bestcor.ph";
 
 const DEFAULT_DESCRIPTION =
-  "Bestcor Phils., Inc. — civil–electromechanical contractor in San Jose del Monte, Bulacan. Preventive maintenance, on-site repairs, testing & diagnostics, electrical installation and pole-line works since November 2005.";
+  "Bestcor Phils., Inc. — civil-electromechanical contractor in San Jose del Monte, Bulacan. Electrical, mechanical, electromechanical and civil services: preventive maintenance, testing & diagnostics, distribution and pole-line construction — since November 2005.";
 
 export function buildMetadata({
   title,

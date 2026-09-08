@@ -112,12 +112,14 @@ export const companyHistory = [
   },
 ] as const;
 
+/** Major capability families shown on the homepage strip. */
 export const capabilityStrip = [
-  { title: "Electrical Systems", note: "Preventive maintenance, testing & diagnostics" },
-  { title: "Electromechanical Services", note: "Mechanical & electromechanical equipment" },
-  { title: "Civil Works", note: "Construction & associated civil scope" },
-  { title: "Safety Focused", note: "Safe, disciplined field execution" },
-  { title: "Established 2005", note: "Operating since November 2005" },
+  { title: "Electrical Services", note: "Distribution, testing & diagnostics" },
+  { title: "Electromechanical Works", note: "Maintenance, repairs & installations" },
+  { title: "Mechanical Services", note: "Pumps, motors, generator sets, pipelines" },
+  { title: "Civil Works", note: "Service entrances, foundations & structures" },
+  { title: "Testing & Maintenance", note: "Preventive maintenance & field testing" },
+  { title: "Pole-Line & Distribution Works", note: "Steel-pole foundations & line works" },
 ] as const;
 
 export const footerValues = [
