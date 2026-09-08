@@ -97,13 +97,13 @@ export const headerCta = { href: "/contact", label: "Request a Quotation" };
 export const companyHistory = [
   {
     year: "1987",
-    title: "Rhyne Construction & Trading Corporation (RCTC) established",
-    body: "RCTC began as an electrical contracting company and grew into a diversified electrical company and corporation, staffed by licensed registered electrical engineers and experienced linemen, electricians and technicians.",
+    title: "Rhyme Construction & Trading Corporation (RCTC) established",
+    body: "RCTC began as a relatively small electrical contracting company and grew into a diversified electrical company and corporation, staffed by licensed registered electrical engineers and experienced linemen, electricians and technicians.",
   },
   {
     year: "2002",
     title: "BESTCOR formed by RCTC",
-    body: "Rhyne Construction and Trading Corporation formed Builders of Electrical Services and Trading Corporation (BESTCOR) to serve the load-side needs of energy companies and users.",
+    body: "Rhyme Construction and Trading Corporation formed Builders of Electrical Services and Trading Corporation (BESTCOR) as a new company to serve the load-side needs of energy companies and users.",
   },
   {
     year: "2005",

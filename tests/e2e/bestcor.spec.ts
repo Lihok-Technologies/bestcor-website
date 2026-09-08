@@ -28,7 +28,7 @@ test("2. Main navigation reaches the About page", async ({ page }) => {
   await expect(page.getByRole("heading", { level: 1, name: /integrity & quality/i })).toBeVisible();
 });
 
-test("3. Services page lists all six service lines", async ({ page }) => {
+test("3. Services page lists all seven service lines", async ({ page }) => {
   await page.goto("/services");
   await expect(page.getByRole("heading", { level: 1, name: /reliability/i })).toBeVisible();
   for (const name of [
