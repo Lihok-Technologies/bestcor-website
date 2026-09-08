@@ -44,7 +44,7 @@ function ServiceRow({
           </div>
           <figcaption className="mt-3 flex items-center justify-between text-[0.6875rem] font-semibold tracking-[0.2em] text-muted-foreground uppercase">
             <span>{asset.chip}</span>
-            <span className="font-mono text-signal-bright">{String(index + 1).padStart(2, "0")} / 06</span>
+            <span className="font-mono text-signal-bright">{String(index + 1).padStart(2, "0")} / {String(services.length).padStart(2, "0")}</span>
           </figcaption>
         </figure>
       </ImageReveal>
@@ -114,7 +114,7 @@ export default function ServicesPage() {
           <Reveal className="py-16 text-center md:py-20">
             <p className="eyebrow eyebrow--center justify-center">Scope not listed?</p>
             <p className="mx-auto mt-5 max-w-xl text-[1rem] leading-relaxed text-muted-foreground">
-              If your requirement sits outside the six service lines above,
+              If your requirement sits outside the service lines above,
               describe it in a quotation request — Bestcor will confirm
               whether it is within our capability.
             </p>

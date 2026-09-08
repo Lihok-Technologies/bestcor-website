@@ -1,8 +1,10 @@
 /**
  * BESTCOR — curated image manifest.
  *
- * Every web asset traces back to a real photograph exported from Bestcor's
- * own Facebook page (source-assets/facebook-export/...). Processed,
+ * Every web asset traces back to a real Bestcor photograph — exported from
+ * Bestcor's own Facebook page (source-assets/facebook-export/...) or, for
+ * the service-mechanical asset, the OWNER-supplied company profile deck
+ * (source-assets/bestcor-presentation/...). Processed,
  * optimized derivatives live in /public/images. Alt text stays at
  * capability level and never names clients, projects, locations beyond the
  * verified municipality, or numeric claims.
@@ -92,6 +94,10 @@ export const curated: Record<string, ImageAsset> = {
   "work-grid-4": R(
     "work-grid-4", "fb_00025", "worksite", "Electrical Works",
     "Bestcor electrical work photograph.", 560, 560,
+  ),
+  "service-mechanical": R(
+    "service-mechanical", "presentation-s06", "mechanical", "Mechanical Services",
+    "Bestcor mechanical services — pumps, motors and generator sets.", 680, 680,
   ),
   "safety-personnel": R(
     "safety-personnel", "fb_00021", "crew", "Field Personnel",

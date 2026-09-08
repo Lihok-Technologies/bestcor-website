@@ -53,7 +53,7 @@ export default async function ServiceDetailPage({
   return (
     <>
       <PageHero
-        kicker={`Service ${String(index + 1).padStart(2, "0")} / 06`}
+        kicker={`Service ${String(index + 1).padStart(2, "0")} / ${String(services.length).padStart(2, "0")}`}
         title={service.title}
         lead={service.intro}
       >

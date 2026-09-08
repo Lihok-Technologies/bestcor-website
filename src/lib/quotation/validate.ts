@@ -23,6 +23,7 @@ export const ALLOWED_SERVICES = [
   "Electrical Testing & Diagnostics",
   "Distribution Components & Works",
   "Transmission & Pole-Line Works",
+  "Mechanical Services",
   "Multiple services / not listed",
 ] as const;
 

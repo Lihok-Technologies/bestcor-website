@@ -9,7 +9,7 @@ import {
   MapPinIcon,
   MailIcon,
 } from "lucide-react";
-import { site } from "@/lib/site";
+import { site, companyHistory } from "@/lib/site";
 import { curated } from "@/lib/images";
 import { buildMetadata } from "@/lib/metadata";
 import { PageHero } from "@/components/page-hero";
@@ -114,6 +114,26 @@ export default function AboutPage() {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Company history (from OWNER-supplied company profile deck) */}
+      <section aria-labelledby="history-heading" className="border-b border-border bg-canvas-raised">
+        <div className="wrap py-20 md:py-24">
+          <SectionHeading
+            kicker="Company history"
+            title="From 1987 to Bestcor Phils., Inc."
+            intro="Milestones as published in Bestcor's own company profile presentation."
+          />
+          <ol className="mx-auto grid max-w-5xl gap-px border border-border bg-border/60 md:grid-cols-3">
+            {companyHistory.map((m) => (
+              <li key={m.year} className="bg-card p-8">
+                <p className="display text-[2rem] leading-none text-brand-bright">{m.year}</p>
+                <h3 className="display mt-5 text-[1.15rem] text-foreground">{m.title}</h3>
+                <p className="mt-4 text-[0.875rem] leading-relaxed text-muted-foreground">{m.body}</p>
+              </li>
+            ))}
+          </ol>
         </div>
       </section>
 
