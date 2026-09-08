@@ -22,8 +22,15 @@ export const site = {
   /** Verified: operations began November 2005 */
   established: "November 2005",
   establishedShort: "Since 2005",
-  /** Verified municipality only — no street address published */
+  /** Verified municipality (short form for footer/nav) */
   location: "San Jose del Monte, Bulacan, Philippines",
+  /**
+   * Full office address — as published in the OWNER-supplied company
+   * profile presentation ("Powerpoint Presentation - Bestcor WITH
+   * COMPLETED PROJ.pptx").
+   */
+  officeAddress:
+    "8985 Emerald St., Pecsonville Subdivision, Brgy. Tungkong Mangga, City of San Jose del Monte, Bulacan 3023, Philippines",
   /** Verified published email */
   email: "info@bestcor.ph",
   /** Production web domain (canonical host) */
@@ -82,6 +89,29 @@ export const mainNav: NavItem[] = [
 export const headerCta = { href: "/contact", label: "Request a Quotation" };
 
 /** Capability strip labels (owner-approved) */
+/**
+ * Company history — milestones as published in the OWNER-supplied company
+ * profile presentation (slide 2–3). The site's approved "operating since
+ * November 2005" statement remains the primary reference.
+ */
+export const companyHistory = [
+  {
+    year: "1987",
+    title: "Rhyne Construction & Trading Corporation (RCTC) established",
+    body: "RCTC began as an electrical contracting company and grew into a diversified electrical company and corporation, staffed by licensed registered electrical engineers and experienced linemen, electricians and technicians.",
+  },
+  {
+    year: "2002",
+    title: "BESTCOR formed by RCTC",
+    body: "Rhyne Construction and Trading Corporation formed Builders of Electrical Services and Trading Corporation (BESTCOR) to serve the load-side needs of energy companies and users.",
+  },
+  {
+    year: "2005",
+    title: "Bestcor Phils., Inc.",
+    body: "BESTCOR was recognized and re-incorporated as Bestcor Phils., Inc., expanding beyond electrical services into mechanical and civil works.",
+  },
+] as const;
+
 export const capabilityStrip = [
   { title: "Electrical Systems", note: "Preventive maintenance, testing & diagnostics" },
   { title: "Electromechanical Services", note: "Mechanical & electromechanical equipment" },

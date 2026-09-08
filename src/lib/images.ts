@@ -93,6 +93,10 @@ export const curated: Record<string, ImageAsset> = {
     "work-grid-4", "fb_00025", "worksite", "Electrical Works",
     "Bestcor electrical work photograph.", 560, 560,
   ),
+  "service-mechanical": R(
+    "service-mechanical", "presentation-s06", "mechanical", "Mechanical Services",
+    "Bestcor mechanical services — pumps, motors and generator sets.", 680, 680,
+  ),
   "safety-personnel": R(
     "safety-personnel", "fb_00021", "crew", "Field Personnel",
     "Bestcor field personnel at work.", 828, 828,

@@ -20,8 +20,8 @@ App Router, Server Components by default. Client components exist only where int
 |---|---|
 | `/` | Home — hero, capability strip, services, work, about, safety & quality, CTA |
 | `/about` | About Bestcor — intro, history facts, mission, vision, values |
-| `/services` | Services overview — six service lines |
-| `/services/[slug]` | Service detail — preventive-maintenance, on-site-repairs, supply-installation-construction, testing-diagnostics, distribution-components-works, pole-line-transmission-works |
+| `/services` | Services overview — seven service lines |
+| `/services/[slug]` | Service detail — preventive-maintenance, on-site-repairs, supply-installation-construction, testing-diagnostics, distribution-components-works, pole-line-transmission-works, mechanical-services |
 | `/projects` | Our Work — photography-led, capability-labelled, case-study ready |
 | `/gallery` | All 33 real exported photographs |
 | `/safety-quality` | Safety & Quality approach (no fabricated certifications) |
@@ -135,8 +135,8 @@ Standalone **Web Service** (not a static site — the quotation API needs a Node
 
 Nothing below is published on the site yet:
 
-1. Exact street address (only "San Jose del Monte, Bulacan, Philippines" is shown).
-2. Official phone / mobile numbers.
+1. ~~Exact street address~~ — resolved: full office address published from Bestcor's own company profile (8985 Emerald St., Pecsonville Subdivision, Brgy. Tungkong Mangga, City of San Jose del Monte, Bulacan 3023).
+2. Official phone / mobile numbers — withheld; profile lists numbers pending currency confirmation.
 3. ~~Confirm the preferred inquiry email~~ — resolved: the public inquiry email is now `info@bestcor.ph`.
 4. PCAB / ISO / utility accreditations and licenses.
 5. Client names, project names, locations, values and case studies.

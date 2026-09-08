@@ -38,6 +38,7 @@ test("3. Services page lists all six service lines", async ({ page }) => {
     "Electrical Testing & Diagnostics",
     "Distribution Components & Works",
     "Transmission & Pole-Line Works",
+    "Mechanical Services",
   ]) {
     await expect(page.getByRole("heading", { name })).toBeVisible();
   }

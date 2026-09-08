@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRightIcon, ImagesIcon } from "lucide-react";
 import { gallery } from "@/lib/images";
+import { caseStudies, ongoingWorks } from "@/lib/projects";
 import { buildMetadata } from "@/lib/metadata";
 import { PageHero } from "@/components/page-hero";
 import { CtaBand } from "@/components/cta-band";
@@ -26,6 +27,8 @@ const capabilityLabels = [
   "Distribution equipment",
   "Field installation",
   "Utility & pole-line works",
+  "Tree trimming / line clearance",
+  "Mechanical services",
 ] as const;
 
 /**
@@ -147,26 +150,65 @@ export default function ProjectsPage() {
         </div>
       </section>
 
-      {/* case-study architecture (empty until Bestcor confirms publishable jobs) */}
+      {/* Completed projects — from Bestcor's OWNER-supplied company profile */}
       <section aria-labelledby="case-studies" className="border-b border-border bg-canvas-deep">
-        <div className="wrap grid gap-10 py-16 md:grid-cols-[0.8fr_1.2fr] md:py-20">
-          <div>
-            <p className="eyebrow">Coming next</p>
-            <h2 id="case-studies" className="display mt-4 text-[1.9rem] text-foreground sm:text-[2.4rem]">
-              Verified case studies
-            </h2>
+        <div className="wrap py-16 md:py-20">
+          <div className="grid gap-8 lg:grid-cols-[0.7fr_1.3fr] lg:items-start lg:gap-12">
+            <div>
+              <p className="eyebrow">Completed projects</p>
+              <h2 id="case-studies" className="display mt-4 text-[1.9rem] text-foreground sm:text-[2.4rem]">
+                A record of real work
+              </h2>
+              <p className="mt-5 text-[0.9375rem] leading-relaxed text-muted-foreground">
+                Client, location and year details below are reproduced from
+                Bestcor&apos;s own company profile presentation. Scope lines
+                stay as published there — no project is embellished.
+              </p>
+              <Link href="/contact" className="btn btn--ghost mt-7">
+                Discuss a project with Bestcor <ArrowRightIcon className="size-4" aria-hidden="true" />
+              </Link>
+            </div>
+
+            <div className="overflow-x-auto border border-border bg-canvas-raised">
+              <table className="w-full min-w-[720px] border-collapse text-left">
+                <caption className="sr-only">Completed projects listed in Bestcor&apos;s company profile</caption>
+                <thead>
+                  <tr className="border-b border-border text-[0.6875rem] uppercase tracking-[0.16em] text-muted-foreground">
+                    <th scope="col" className="px-5 py-4 font-bold">Project</th>
+                    <th scope="col" className="px-5 py-4 font-bold">Client</th>
+                    <th scope="col" className="px-5 py-4 font-bold">Location</th>
+                    <th scope="col" className="px-5 py-4 font-bold">Year</th>
+                    <th scope="col" className="px-5 py-4 font-bold">Scope</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {caseStudies.map((cs) => (
+                    <tr key={cs.slug} className="border-b border-border/70 align-top last:border-0 hover:bg-white/[0.03]">
+                      <td className="px-5 py-4 text-[0.875rem] font-semibold text-foreground">{cs.title}</td>
+                      <td className="px-5 py-4 text-[0.875rem] text-foreground/90">{cs.client ?? "—"}</td>
+                      <td className="px-5 py-4 text-[0.875rem] text-muted-foreground">{cs.location ?? "—"}</td>
+                      <td className="px-5 py-4 text-[0.875rem] whitespace-nowrap text-muted-foreground">{cs.year ?? "—"}</td>
+                      <td className="px-5 py-4 text-[0.8125rem] leading-relaxed text-muted-foreground">{cs.summary}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
-          <div className="flex flex-col justify-center">
-            <p className="max-w-2xl text-[0.95rem] leading-relaxed text-muted-foreground">
-              Bestcor will publish client-approved case studies here as they
-              become available — scope, equipment and outcomes told accurately
-              and with permission. Until then, no fabricated project stories:
-              the photographs above are the honest record of the work.
+
+          <Reveal className="mt-10 grid gap-6 border border-border bg-card p-6 md:grid-cols-[0.7fr_1.3fr] md:gap-10 md:p-8">
+            <p className="display text-[1.1rem] leading-snug text-foreground">
+              Ongoing electrical civil works since 2009
             </p>
-            <Link href="/contact" className="btn btn--ghost mt-7 self-start">
-              Discuss a project with Bestcor <ArrowRightIcon className="size-4" aria-hidden="true" />
-            </Link>
-          </div>
+            <ul className="grid gap-x-8 gap-y-2.5 sm:grid-cols-2">
+              {ongoingWorks.map((w) => (
+                <li key={w} className="flex items-start gap-2.5 text-[0.875rem] leading-relaxed text-muted-foreground">
+                  <span className="mt-[0.55em] block size-1.5 shrink-0 bg-brand-bright" aria-hidden="true" />
+                  {w}
+                </li>
+              ))}
+            </ul>
+          </Reveal>
         </div>
       </section>
 

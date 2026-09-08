@@ -59,9 +59,9 @@ export default function ContactPage() {
                 </li>
                 <li>
                   <p className="flex items-center gap-2 text-[0.75rem] font-bold tracking-[0.14em] text-muted-foreground uppercase">
-                    <MapPinIcon className="size-4 text-brand-bright" aria-hidden="true" /> Location
+                    <MapPinIcon className="size-4 text-brand-bright" aria-hidden="true" /> Office address
                   </p>
-                  <p className="mt-1.5 leading-relaxed text-foreground/90">{site.location}</p>
+                  <p className="mt-1.5 leading-relaxed text-foreground/90">{site.officeAddress}</p>
                 </li>
                 <li>
                   <p className="flex items-center gap-2 text-[0.75rem] font-bold tracking-[0.14em] text-muted-foreground uppercase">
@@ -97,9 +97,9 @@ export default function ContactPage() {
             <div className="flex items-start gap-3 border-l-2 border-brand bg-canvas-raised p-5">
               <InfoIcon className="mt-0.5 size-4 shrink-0 text-brand-bright" aria-hidden="true" />
               <p className="text-[0.8125rem] leading-relaxed text-muted-foreground">
-                Bestcor shares only the verified contact details above. Street
-                address, phone numbers and other specifics will be added once
-                the company confirms what may be published.
+                The office address above comes from Bestcor&apos;s own company
+                profile. Telephone numbers listed in that profile are withheld
+                until Bestcor confirms they are current.
               </p>
             </div>
 
