@@ -147,7 +147,7 @@ export default function HomePage() {
       <section aria-label="Capabilities" className="border-b border-border bg-canvas-raised">
         <ul className="grid grid-cols-2 gap-px overflow-hidden border-x border-border bg-border/70 sm:grid-cols-3 lg:grid-cols-6">
           {capabilityStrip.map((c, i) => {
-            const Icon = capabilityIcons[i];
+            const Icon = capabilityIcons[i] ?? ZapIcon;
             return (
               <li
                 key={c.title}
@@ -174,7 +174,7 @@ export default function HomePage() {
           <div>
             <p className="eyebrow">Established experience</p>
             <h2 className="display mt-4 text-[2rem] text-foreground sm:text-[2.5rem]">
-              A three-decade electrical lineage — one contracting standard
+              An electrical lineage since 1987 — one contracting standard
             </h2>
             <p className="mt-5 max-w-xl text-[0.95rem] leading-relaxed text-muted-foreground">
               Bestcor&apos;s company profile traces its roots to 1987 — from

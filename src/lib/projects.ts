@@ -26,25 +26,27 @@ export type CaseStudy = {
   year?: string;
   /** One-line factual summary (scope as published) */
   summary: string;
+  /** Display category (drives cards/filtering) */
+  category: string;
   /** Image key from src/lib/images.ts (optional; not yet assigned) */
   image?: string;
 };
 
 export const caseStudies: CaseStudy[] = [
-  { slug: "steelpole-batangas-2010", title: "Steel-Pole Foundation Works", client: "Manila Electric Company", location: "Batangas", capability: "Utility & pole-line works", year: "2010", summary: "Steel-pole foundation works." },
-  { slug: "steelpole-cabuyao-2011", title: "Steel-Pole Foundation Works", client: "Manila Electric Company", location: "Cabuyao", capability: "Utility & pole-line works", year: "2011", summary: "Steel-pole foundation works." },
-  { slug: "steelpole-dasmarias-2012", title: "Steel-Pole Foundation Works", client: "Manila Electric Company", location: "Dasmariñas", capability: "Utility & pole-line works", year: "2012", summary: "Steel-pole foundation works." },
-  { slug: "diversion-canal-malolos-2012", title: "Diversion Canal", client: "Manila Electric Company", location: "Malolos, Bulacan", capability: "Civil works", year: "2012", summary: "Diversion canal works." },
-  { slug: "steelpole-antipolo-2012", title: "Steel-Pole Foundation Works", client: "Manila Electric Company", location: "Antipolo", capability: "Utility & pole-line works", year: "2012", summary: "Steel-pole foundation works." },
-  { slug: "steelpole-san-juan-2012", title: "Steel-Pole Foundation Works", client: "Manila Electric Company", location: "San Juan", capability: "Utility & pole-line works", year: "2012", summary: "Steel-pole foundation works." },
-  { slug: "steelpole-erodriguez-2013", title: "Steel-Pole Foundation Works", client: "Manila Electric Company", location: "E. Rodriguez", capability: "Utility & pole-line works", year: "2012–2013", summary: "Steel-pole foundation works." },
-  { slug: "concrete-manhole-lamesa-2014", title: "Concrete Manhole", client: "Manila Water Company Inc.", location: "La Mesa", capability: "Civil works", year: "2013–2014", summary: "Concrete manhole works." },
-  { slug: "elm-intake-interconnect-2019", title: "Interconnecting Line — ELM Intake at ELMTP", client: "Manila Water Company Inc.", location: "Quezon City", capability: "Utility & pole-line works", year: "2019", summary: "Interconnecting line works." },
-  { slug: "civil-works-north-qc-2019", title: "Civil Works", client: "Manila Water Company Inc.", location: "North QC System", capability: "Civil works", year: "2019", summary: "Civil works for the North QC system." },
-  { slug: "steelpole-sjdm-2020", title: "Steel-Pole Foundation Works", client: "Meralco Energy Inc.", location: "San Jose del Monte, Bulacan", capability: "Utility & pole-line works", year: "2018–2020", summary: "Steel-pole foundation works." },
-  { slug: "delos-santos-ps-upgrade-2021", title: "Delos Santos Pumping Station Upgrade to 23 MLD", client: "F.E.D. Construction Company Inc.", location: "Delos Santos Pumping Station", capability: "Mechanical services", year: "2021", summary: "Upgrade of the pumping station to 23 MLD capacity." },
-  { slug: "overhead-tank-demolition-2023", title: "Demolition of Overhead Tank", client: "Manila Water Company Inc.", location: "Vista Real & Tivoli Green Subdivision", capability: "Civil works", year: "2023", summary: "Demolition of an overhead tank." },
-  { slug: "linebooster-service-entrances", title: "Service Entrances", client: "Manila Water Company Inc.", location: "Various line-booster locations", capability: "Electrical maintenance", year: "2021–2023", summary: "Service entrance works across line-booster locations." },
+  { slug: "steelpole-batangas-2010", title: "Steel-Pole Foundation Works", client: "Manila Electric Company", location: "Batangas", capability: "Utility & pole-line works", year: "2010", category: "Pole-Line & Distribution", summary: "Steel-pole foundation works." },
+  { slug: "steelpole-cabuyao-2011", title: "Steel-Pole Foundation Works", client: "Manila Electric Company", location: "Cabuyao", capability: "Utility & pole-line works", year: "2011", category: "Pole-Line & Distribution", summary: "Steel-pole foundation works." },
+  { slug: "steelpole-dasmarias-2012", title: "Steel-Pole Foundation Works", client: "Manila Electric Company", location: "Dasmariñas", capability: "Utility & pole-line works", year: "2012", category: "Pole-Line & Distribution", summary: "Steel-pole foundation works." },
+  { slug: "diversion-canal-malolos-2012", title: "Diversion Canal", client: "Manila Electric Company", location: "Malolos, Bulacan", capability: "Civil works", year: "2012", category: "Civil Works", summary: "Diversion canal works." },
+  { slug: "steelpole-antipolo-2012", title: "Steel-Pole Foundation Works", client: "Manila Electric Company", location: "Antipolo", capability: "Utility & pole-line works", year: "2012", category: "Pole-Line & Distribution", summary: "Steel-pole foundation works." },
+  { slug: "steelpole-san-juan-2012", title: "Steel-Pole Foundation Works", client: "Manila Electric Company", location: "San Juan", capability: "Utility & pole-line works", year: "2012", category: "Pole-Line & Distribution", summary: "Steel-pole foundation works." },
+  { slug: "steelpole-erodriguez-2013", title: "Steel-Pole Foundation Works", client: "Manila Electric Company", location: "E. Rodriguez", capability: "Utility & pole-line works", year: "2012–2013", category: "Pole-Line & Distribution", summary: "Steel-pole foundation works." },
+  { slug: "concrete-manhole-lamesa-2014", title: "Concrete Manhole", client: "Manila Water Company Inc.", location: "La Mesa", capability: "Civil works", year: "2013–2014", category: "Civil Works", summary: "Concrete manhole works." },
+  { slug: "elm-intake-interconnect-2019", title: "Interconnecting Line — ELM Intake at ELMTP", client: "Manila Water Company Inc.", location: "Quezon City", capability: "Utility & pole-line works", year: "2019", category: "Pole-Line & Distribution", summary: "Interconnecting line works." },
+  { slug: "civil-works-north-qc-2019", title: "Civil Works", client: "Manila Water Company Inc.", location: "North QC System", capability: "Civil works", year: "2019", category: "Civil Works", summary: "Civil works for the North QC system." },
+  { slug: "steelpole-sjdm-2020", title: "Steel-Pole Foundation Works", client: "Meralco Energy Inc.", location: "San Jose del Monte, Bulacan", capability: "Utility & pole-line works", year: "2018–2020", category: "Pole-Line & Distribution", summary: "Steel-pole foundation works." },
+  { slug: "delos-santos-ps-upgrade-2021", title: "Delos Santos Pumping Station Upgrade to 23 MLD", client: "F.E.D. Construction Company Inc.", location: "Delos Santos Pumping Station", capability: "Mechanical services", year: "2021", category: "Water Infrastructure", summary: "Upgrade of the pumping station to 23 MLD capacity." },
+  { slug: "overhead-tank-demolition-2023", title: "Demolition of Overhead Tank", client: "Manila Water Company Inc.", location: "Vista Real & Tivoli Green Subdivision", capability: "Civil works", year: "2023", category: "Civil Works", summary: "Demolition of an overhead tank." },
+  { slug: "linebooster-service-entrances", title: "Service Entrances", client: "Manila Water Company Inc.", location: "Various line-booster locations", capability: "Electrical maintenance", year: "2021–2023", category: "Distribution / Service Entrance", summary: "Service entrance works across line-booster locations." },
 ];
 
 /**
@@ -71,18 +73,9 @@ export const projectCategories = [
   "Distribution / Service Entrance",
 ] as const;
 
-/** Map a register capability family to its display category. */
-export function projectCategory(c: Pick<CaseStudy, "capability">): string {
-  switch (c.capability) {
-    case "Utility & pole-line works":
-      return "Pole-Line & Distribution";
-    case "Mechanical services":
-      return "Water Infrastructure";
-    case "Electrical maintenance":
-      return "Distribution / Service Entrance";
-    default:
-      return "Civil Works";
-  }
+/** Display category for a register row (explicit per-row value). */
+export function projectCategory(c: Pick<CaseStudy, "category" | "capability">): string {
+  return c.category;
 }
 
 /** Representative projects surfaced on the homepage and Projects page. */

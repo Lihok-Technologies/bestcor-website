@@ -88,7 +88,7 @@ export default function AboutPage() {
                 Bestcor performs preventive maintenance, on-site repairs,
                 electrical testing and diagnostics, and the supply,
                 installation and construction of electrical distribution
-                facilities. The same crews carry out mechanical services on
+                facilities. Bestcor also provides mechanical services on
                 pumps, motors and generator sets, plus distribution component
                 works and transmission and pole-line construction.
               </p>

@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Bestcor Phils., Inc. | Built on Integrity. Driven by Quality.",
     description:
-      "Civil–electromechanical contractor. Preventive maintenance, testing & diagnostics, electrical installation and pole-line works since 2005.",
+      "Civil-electromechanical contractor. Electrical, mechanical and civil services — preventive maintenance, testing & diagnostics, distribution and pole-line construction since November 2005.",
     images: [`${SITE_URL}/images/og-home.jpg`],
   },
 };

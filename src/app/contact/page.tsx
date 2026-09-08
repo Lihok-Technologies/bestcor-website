@@ -11,7 +11,7 @@ import { Reveal } from "@/components/reveal";
 export const metadata: Metadata = buildMetadata({
   title: "Contact & Request a Quotation",
   description:
-    "Request a quotation from Bestcor Phils., Inc. for electrical, electromechanical or civil works — or reach the company directly by email.",
+    "Request a quotation from Bestcor Phils., Inc. for electrical, mechanical, electromechanical or civil works — maintenance, repairs, testing, construction and installation scope.",
   path: "/contact",
 });
 
@@ -31,7 +31,7 @@ export default function ContactPage() {
             Request a <span className="text-signal-bright">quotation</span>
           </>
         }
-        lead="Tell us about the work you need — project inquiries, quotation requests, maintenance requirements, construction or installation scope, or field-service needs. The more detail you include — equipment, location, schedule — the faster Bestcor can respond usefully."
+        lead="Tell us about the work you need — project inquiries, quotation requests, maintenance requirements, construction or installation scope, or field-service needs. The more detail you include — equipment, location, schedule — the better prepared Bestcor's response will be."
       >
         <ul className="flex flex-wrap gap-2.5" aria-label="Types of inquiries Bestcor handles">
           {[
