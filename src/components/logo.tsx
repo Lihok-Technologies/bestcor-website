@@ -1,32 +1,39 @@
-import Image from "next/image";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { site } from "@/lib/site";
 
 /**
- * Exact owner-supplied Bestcor logo (optimized 512px derivative of the
- * original source-assets/bestcor-logo.png) next to the legal name + line.
+ * Canonical Bestcor logo — the exact OWNER-supplied SVG
+ * (public/brand/bestcor-logo.svg, 576×432 viewBox).
+ * Artwork is never recolored, cropped or distorted; aspect is preserved
+ * and `size` controls the rendered HEIGHT (width follows the ratio).
+ * Served as a plain <img> so the SVG passes through unmodified.
  */
+const LOGO_SRC = "/brand/bestcor-logo.svg";
+const LOGO_W = 576;
+const LOGO_H = 432;
+
 export function LogoMark({
-  size = 56,
+  size = 52,
   className,
   decorative = false,
 }: {
+  /** Rendered height in px; width follows the SVG aspect ratio. */
   size?: number;
   className?: string;
   /** Mark the image decorative when adjacent visible text already names the link. */
   decorative?: boolean;
 }) {
   return (
-    <Image
-      src="/images/bestcor-logo.png"
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      src={LOGO_SRC}
       alt={decorative ? "" : "Bestcor Phils., Inc. logo"}
       aria-hidden={decorative || undefined}
-      width={size * 2}
-      height={size * 2}
-      className={cn("h-auto w-auto shrink-0", className)}
-      style={{ width: size, height: size }}
-      priority
+      width={LOGO_W}
+      height={LOGO_H}
+      className={cn("shrink-0", className)}
+      style={{ height: size, width: "auto" }}
     />
   );
 }
@@ -41,7 +48,7 @@ export function LogoLockup({
 }) {
   return (
     <span className={cn("flex items-center gap-3", className)}>
-      <LogoMark size={compact ? 52 : 56} />
+      <LogoMark size={compact ? 46 : 50} />
       <span
         className={cn(
           "hidden min-w-0 flex-col leading-none sm:flex",
@@ -78,7 +85,7 @@ export function BrandLink({ className }: { className?: string }) {
       href="/"
       className={cn("flex items-center gap-3 rounded-sm", className)}
     >
-      <LogoMark size={52} decorative />
+      <LogoMark size={48} decorative />
       <WordmarkOnly className="hidden min-[420px]:flex" />
     </Link>
   );

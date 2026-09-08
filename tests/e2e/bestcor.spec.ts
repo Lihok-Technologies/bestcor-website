@@ -11,9 +11,12 @@ test("1. Homepage renders with brand headline and logo", async ({ page }) => {
     page.getByRole("heading", { level: 1, name: /built on integrity/i }),
   ).toBeVisible();
   await expect(page.getByRole("heading", { level: 1, name: /driven by quality/i })).toBeVisible();
-  // header brand link: decorative logo + visible wordmark provide the name
+  // header brand link: decorative canonical SVG logo + visible wordmark
   await expect(
     page.getByRole("banner").getByRole("link", { name: /bestcor phils/i }),
+  ).toBeVisible();
+  await expect(
+    page.getByRole("banner").locator('img[src="/brand/bestcor-logo.svg"]'),
   ).toBeVisible();
   await expect(page.getByRole("link", { name: /request a quotation/i }).first()).toBeVisible();
 });
