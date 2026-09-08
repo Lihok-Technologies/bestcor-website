@@ -1,17 +1,15 @@
 /**
  * BESTCOR — curated image manifest.
  *
- * Every web asset traces back to a real Bestcor photograph — exported from
- * Bestcor's own Facebook page (source-assets/facebook-export/...) or, for
- * the service-mechanical asset, the OWNER-supplied company profile deck
- * (source-assets/bestcor-presentation/...). Processed,
- * optimized derivatives live in /public/images. Alt text stays at
- * capability level and never names clients, projects, locations beyond the
- * verified municipality, or numeric claims.
+ * Every web asset traces back to an ORIGINAL embedded photograph from the
+ * OWNER-supplied company profile presentation
+ * (source-assets/bestcor-presentation/playwright-less originals in
+ * harvest/media; provenance recorded per asset below as `deck:<file>`).
+ * Optimized web derivatives live in /public/images/deck-*.webp.
  *
- * NOTE on resolution: the exported Facebook set is 414×414 thumbnails
- * (plus one 1200×628 feature image). Derivatives are modestly upscaled for
- * retina displays; precise per-photo descriptions await Bestcor review.
+ * Alt text stays neutral and never names clients, projects, locations or
+ * people. No photograph is linked to a specific named project because the
+ * source does not associate images with individual projects.
  */
 
 export type ImageAsset = {
@@ -31,129 +29,65 @@ export type ImageAsset = {
     | "equipment"
     | "worksite"
     | "utility";
-  /** Source photograph in the preserved Facebook export */
+  /** Provenance: source presentation media file */
   source: string;
   /** Shown under tiles in Our Work / Gallery */
   chip: string;
 };
 
-const R = (id: string, fb: string, family: ImageAsset["family"], chip: string, alt: string, w: number, h: number) =>
-  ({ src: `/images/${id}.webp`, width: w, height: h, alt, family, chip, source: fb }) as ImageAsset;
+const R = (
+  id: string,
+  source: string,
+  family: ImageAsset["family"],
+  chip: string,
+  alt: string,
+  w: number,
+  h: number,
+) =>
+  ({ src: `/images/${id}.webp`, width: w, height: h, alt, family, chip, source }) as ImageAsset;
 
-/** Curated hero / feature / service assets used across pages */
 export const curated: Record<string, ImageAsset> = {
-  "hero-home": R(
-    "hero-home", "fb_00001", "worksite", "Featured work",
-    "Bestcor work-site photograph — the image Bestcor features on its own page.",
-    1440, 754,
-  ),
-  "service-maintenance": R(
-    "service-maintenance", "fb_00018", "electrical", "Electrical Maintenance",
-    "Bestcor preventive maintenance work on electrical equipment.", 680, 680,
-  ),
-  "service-repairs": R(
-    "service-repairs", "fb_00016", "worksite", "Field Repair",
-    "Bestcor on-site repair work.", 680, 680,
-  ),
-  "service-construction": R(
-    "service-construction", "fb_00013", "electrical", "Installation & Construction",
-    "Bestcor installation work on electrical distribution facilities.", 680, 680,
-  ),
-  "service-testing": R(
-    "service-testing", "fb_00028", "equipment", "Testing & Diagnostics",
-    "Bestcor testing and diagnostic work.", 680, 680,
-  ),
-  "service-distribution": R(
-    "service-distribution", "fb_00011", "electrical", "Distribution Equipment",
-    "Bestcor work on electrical distribution equipment.", 680, 680,
-  ),
-  "service-poleline": R(
-    "service-poleline", "fb_00029", "utility", "Pole-Line Works",
-    "Bestcor transmission and pole-line construction work.", 680, 680,
-  ),
-  "about-crew": R(
-    "about-crew", "fb_00022", "crew", "Field Crew",
-    "Bestcor personnel at a work site.", 828, 828,
-  ),
-  "about-secondary": R(
-    "about-secondary", "fb_00010", "crew", "Field Service",
-    "Bestcor field service team.", 680, 680,
-  ),
-  "work-grid-1": R(
-    "work-grid-1", "fb_00016", "worksite", "Field Repair",
-    "Bestcor field work photograph.", 560, 560,
-  ),
-  "work-grid-2": R(
-    "work-grid-2", "fb_00028", "equipment", "Testing & Diagnostics",
-    "Bestcor testing and diagnostic work.", 560, 560,
-  ),
-  "work-grid-3": R(
-    "work-grid-3", "fb_00011", "electrical", "Distribution Equipment",
-    "Bestcor work on electrical distribution equipment.", 560, 560,
-  ),
-  "work-grid-4": R(
-    "work-grid-4", "fb_00025", "worksite", "Electrical Works",
-    "Bestcor electrical work photograph.", 560, 560,
-  ),
-  "service-mechanical": R(
-    "service-mechanical", "presentation-s06", "mechanical", "Mechanical Services",
-    "Bestcor mechanical services — pumps, motors and generator sets.", 680, 680,
-  ),
-  "safety-personnel": R(
-    "safety-personnel", "fb_00021", "crew", "Field Personnel",
-    "Bestcor field personnel at work.", 828, 828,
-  ),
-  "safety-discipline": R(
-    "safety-discipline", "fb_00010", "crew", "Field Service",
-    "Bestcor field service team.", 680, 680,
-  ),
+  'hero-home': R('deck-hero', 'deck:s23-img-1.jpg', 'worksite', 'Aerial Equipment', 'Bestcor-branded aerial bucket truck in the field.', 1920, 1080),
+  'service-maintenance': R('deck-service-maintenance', 'deck:s14-img-3.jpg', 'electrical', 'Electrical Maintenance', 'Bestcor technicians servicing a motor-control / VFD cabinet.', 680, 680),
+  'service-repairs': R('deck-service-repairs', 'deck:s12-img-2.jpg', 'worksite', 'Field Repair', 'Bestcor technician working on electrical and pump equipment.', 680, 680),
+  'service-construction': R('deck-service-construction', 'deck:s20-img-1.jpg', 'worksite', 'Installation & Construction', 'Bestcor crew carrying out underground/installation works.', 680, 680),
+  'service-testing': R('deck-service-testing', 'deck:s12-img-4.jpg', 'electrical', 'Testing & Diagnostics', 'Bestcor technician performing thermal inspection of an electrical panel.', 680, 680),
+  'service-distribution': R('deck-service-distribution', 'deck:s14-img-1.jpg', 'electrical', 'Distribution Equipment', 'Bestcor crew testing switchgear in a plant room.', 680, 680),
+  'service-poleline': R('deck-service-poleline', 'deck:s16-img-1.jpg', 'electrical', 'Pole-Line Works', 'Bestcor lineman working from an aerial lift on a distribution pole.', 680, 680),
+  'service-mechanical': R('deck-service-mechanical', 'deck:s06-img-1.png', 'mechanical', 'Mechanical Services', 'Bestcor technicians servicing a pump and motor set in a plant room.', 680, 680),
+  'about-crew': R('deck-about-crew', 'deck:s02-img-1.png', 'worksite', 'Field Crew', 'Bestcor field crew during a pre-work briefing.', 900, 900),
+  'about-secondary': R('deck-about-secondary', 'deck:s28-img-1.jpg', 'worksite', 'Field Service', 'Bestcor service vehicle in the field.', 680, 680),
+  'safety-personnel': R('deck-safety-personnel', 'deck:s13-img-1.jpg', 'worksite', 'Field Personnel', 'Bestcor technician performing field testing with test equipment.', 900, 900),
+  'safety-discipline': R('deck-safety-discipline', 'deck:s23-img-1.jpg', 'worksite', 'Aerial Equipment', 'Bestcor-branded aerial bucket truck.', 680, 680),
+  'work-grid-1': R('deck-field-1', 'deck:s12-img-1.jpg', 'electrical', 'Pole-Line Work', 'Bestcor linemen working from an aerial lift.', 640, 640),
+  'work-grid-2': R('deck-field-2', 'deck:s15-img-2.jpg', 'electrical', 'Field Testing', 'Bestcor crew testing outdoor substation equipment.', 640, 640),
+  'work-grid-3': R('deck-field-3', 'deck:s16-img-3.jpg', 'electrical', 'Distribution Equipment', 'Bestcor technician checking a transfer-switch panel.', 640, 640),
+  'work-grid-4': R('deck-field-4', 'deck:s17-img-2.jpg', 'electrical', 'Line Clearance', 'Bestcor line-clearance crew working near the lines.', 640, 640),
 };
 
-/** All 33 exported photographs, ordered as exported, for the Gallery page */
+/** Curated gallery — the strongest authentic presentation photography. */
+/** Short tile provenance label (empty for presentation-deck assets). */
+export function sourceLabel(a: ImageAsset): string {
+  return a.source.startsWith("deck:") ? "" : a.source.replace("fb_", "#");
+}
+
 export const gallery: ImageAsset[] = [
-  ["g-01", "fb_00001", "worksite", "Featured work", "Bestcor work-site photograph — the image Bestcor features on its own page.", 1440, 754],
-  ["g-02", "fb_00002", "worksite", "Field Work", "Bestcor field work photograph.", 640, 640],
-  ["g-03", "fb_00003", "worksite", "Field Work", "Bestcor field work photograph.", 640, 640],
-  ["g-04", "fb_00004", "worksite", "Field Work", "Bestcor field work photograph.", 640, 640],
-  ["g-05", "fb_00005", "worksite", "Field Work", "Bestcor field work photograph.", 640, 640],
-  ["g-06", "fb_00006", "worksite", "Field Work", "Bestcor field work photograph.", 640, 640],
-  ["g-07", "fb_00007", "worksite", "Field Work", "Bestcor field work photograph.", 640, 640],
-  ["g-08", "fb_00008", "worksite", "Field Work", "Bestcor field work photograph.", 640, 640],
-  ["g-09", "fb_00009", "worksite", "Field Work", "Bestcor field work photograph.", 640, 640],
-  ["g-10", "fb_00010", "crew", "Field Service", "Bestcor field service team.", 640, 640],
-  ["g-11", "fb_00011", "electrical", "Electrical Works", "Bestcor electrical work photograph.", 640, 640],
-  ["g-12", "fb_00012", "worksite", "Field Work", "Bestcor field work photograph.", 640, 640],
-  ["g-13", "fb_00013", "electrical", "Electrical Works", "Bestcor electrical work photograph.", 640, 640],
-  ["g-14", "fb_00014", "worksite", "Field Work", "Bestcor field work photograph.", 640, 640],
-  ["g-15", "fb_00015", "worksite", "Field Work", "Bestcor field work photograph.", 640, 640],
-  ["g-16", "fb_00016", "worksite", "On-Site Work", "Bestcor on-site work photograph.", 640, 640],
-  ["g-17", "fb_00017", "worksite", "Field Work", "Bestcor field work photograph.", 640, 640],
-  ["g-18", "fb_00018", "electrical", "Electrical Maintenance", "Bestcor preventive maintenance work.", 640, 640],
-  ["g-19", "fb_00019", "worksite", "Field Work", "Bestcor field work photograph.", 640, 640],
-  ["g-20", "fb_00020", "worksite", "Field Work", "Bestcor field work photograph.", 640, 640],
-  ["g-21", "fb_00021", "crew", "Field Personnel", "Bestcor field personnel at work.", 640, 640],
-  ["g-22", "fb_00022", "crew", "Field Crew", "Bestcor personnel at a work site.", 640, 640],
-  ["g-23", "fb_00023", "worksite", "Field Work", "Bestcor field work photograph.", 640, 640],
-  ["g-24", "fb_00024", "worksite", "Field Work", "Bestcor field work photograph.", 640, 640],
-  ["g-25", "fb_00025", "worksite", "Electrical Works", "Bestcor electrical work photograph.", 640, 640],
-  ["g-26", "fb_00026", "worksite", "Field Work", "Bestcor field work photograph.", 640, 640],
-  ["g-27", "fb_00027", "worksite", "Field Work", "Bestcor field work photograph.", 640, 640],
-  ["g-28", "fb_00028", "equipment", "Testing & Diagnostics", "Bestcor testing and diagnostic work.", 640, 640],
-  ["g-29", "fb_00029", "utility", "Pole-Line Works", "Bestcor transmission and pole-line construction work.", 640, 640],
-  ["g-30", "fb_00030", "equipment", "Equipment", "Bestcor equipment photograph.", 640, 640],
-  ["g-31", "fb_00031", "equipment", "Equipment", "Bestcor equipment photograph.", 640, 640],
-  ["g-32", "fb_00032", "worksite", "Field Work", "Bestcor field work photograph.", 640, 640],
-  ["g-33", "fb_00033", "worksite", "Field Work", "Bestcor work photograph.", 640, 640],
-].map(
-  ([id, fb, family, chip, alt, w, h]) =>
-    ({
-      // g-01 shares the optimized hero file (same source fb_00001)
-      src: id === "g-01" ? "/images/hero-home.webp" : `/images/${id}.webp`,
-      width: w as number,
-      height: h as number,
-      alt,
-      family,
-      chip,
-      source: fb,
-    }) as ImageAsset,
-);
+  R('deck-g-01', 'deck:s13-img-3.jpg', 'electrical', 'Electrical Works', 'Bestcor technician adjusting outdoor electrical equipment.', 720, 720),
+  R('deck-g-02', 'deck:s16-img-2.jpg', 'electrical', 'Electrical Works', 'Bestcor technician servicing a variable-frequency drive panel.', 720, 720),
+  R('deck-g-03', 'deck:s15-img-3.jpg', 'electrical', 'Electrical Works', 'Bestcor technician performing thermal inspection outdoors.', 720, 720),
+  R('deck-g-04', 'deck:s12-img-3.jpg', 'electrical', 'Electrical Works', 'Bestcor technicians working on drive cabinets.', 720, 720),
+  R('deck-g-05', 'deck:s15-img-1.jpg', 'mechanical', 'Mechanical Works', 'Bestcor crew servicing pumps in a pump station.', 720, 720),
+  R('deck-g-06', 'deck:s47-img-1.png', 'mechanical', 'Mechanical Works', 'Bestcor technicians working on large motor and pump installation.', 720, 720),
+  R('deck-g-07', 'deck:s19-img-1.jpg', 'civil', 'Civil Works', 'Bestcor crew tying reinforcement for a concrete foundation.', 720, 720),
+  R('deck-g-08', 'deck:s20-img-2.jpg', 'civil', 'Civil Works', 'Bestcor crew carrying out underground civil works.', 720, 720),
+  R('deck-g-09', 'deck:s16-img-4.jpg', 'electrical', 'Distribution & Pole-Line', 'Aerial work at a distribution transformer.', 720, 720),
+  R('deck-g-10', 'deck:s17-img-4.jpg', 'electrical', 'Distribution & Pole-Line', 'Bestcor aerial bucket trucks on line work.', 720, 720),
+  R('deck-g-11', 'deck:s18-img-4.jpg', 'electrical', 'Distribution & Pole-Line', 'Bestcor bucket truck at a substation structure.', 720, 720),
+  R('deck-g-12', 'deck:s17-img-1.jpg', 'electrical', 'Line Clearance', 'Bestcor tree-trimming equipment on line work.', 720, 720),
+  R('deck-g-13', 'deck:s28-img-1.jpg', 'worksite', 'Field Operations', 'Bestcor service vehicle.', 720, 720),
+  R('deck-g-14', 'deck:s27-img-1.png', 'worksite', 'Field Operations', 'Bestcor excavator on site.', 720, 720),
+  R('deck-g-15', 'deck:s37-img-2.png', 'worksite', 'Field Operations', 'Bestcor test equipment in use.', 720, 720),
+  R('deck-g-16', 'deck:s40-img-1.png', 'worksite', 'Field Operations', 'Shaft-alignment test kit used by Bestcor.', 720, 720),
+  R('deck-g-17', 'deck:s43-img-2.png', 'worksite', 'Field Operations', 'Transformer test set used by Bestcor.', 720, 720),
+  R('deck-g-18', 'deck:s39-img-3.png', 'worksite', 'Field Operations', 'Thermal imager used by Bestcor.', 720, 720),
+];

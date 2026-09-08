@@ -11,6 +11,8 @@ test("1. Homepage renders with brand headline and logo", async ({ page }) => {
     page.getByRole("heading", { level: 1, name: /built on integrity/i }),
   ).toBeVisible();
   await expect(page.getByRole("heading", { level: 1, name: /driven by quality/i })).toBeVisible();
+  // canonical hero photograph renders (deck-sourced derivative)
+  await expect(page.locator('img[src*="/images/deck-hero.webp"]').first()).toBeVisible();
   // header brand link: decorative canonical SVG logo + visible wordmark
   await expect(
     page.getByRole("banner").getByRole("link", { name: /bestcor phils/i }),
