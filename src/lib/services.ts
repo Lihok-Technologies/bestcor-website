@@ -110,6 +110,35 @@ export const services: Service[] = [
       "Bestcor brings technical support and repair capability directly to your facility.",
     detailBody:
       "Our teams respond to equipment faults with structured troubleshooting and on-site repair work. Where a repair calls for specialist attention beyond the immediate fix, we work with the equipment owner to define the right path forward.",
+    /**
+     * Evidence — deck slide 3 ("On-Site Repairs" in the services list, and
+     *  "Trouble shooting and repair/replacement of Load Break Switch, Power Fuse
+     *  Assembly, Transformer, Relay Protection, Switchgear, Metering"); the
+     *  slides 12–16 preventive-maintenance header, which states its scope
+     *  "INCLUDING ON-SITE REPAIRS AND INSTALLATIONS"; the mechanical-services
+     *  scope above ("repair or rewinding" of pumps and motors, generator sets);
+     *  and the approved service-image alt text "Bestcor technician working on
+     *  electrical and pump equipment".
+     *
+     *  No response time, call-out commitment, spare-parts availability, repair
+     *  turnaround or service-area coverage is claimed: none is evidenced.
+     */
+    problems: [
+      "Equipment faults do not wait for a convenient moment, and the work they need is at the installation rather than at a desk.",
+      "A fault has to be traced to the item actually causing it before a repair can be scoped.",
+      "Some repairs go beyond the first fix and need the equipment owner involved in deciding what happens next.",
+      "Electrical and mechanical equipment stand in the same plant and fail in the same plant, so field repair has to cover both.",
+    ],
+    approach: [
+      "Field technical support, troubleshooting and repair activities happen at the customer's location.",
+      "Troubleshooting establishes which item is causing the fault before any repair or replacement is proposed.",
+      "Mechanical repair covers pumps and motors, including rewinding, and generator sets.",
+      "Electrical repair work covers the distribution components that switch, protect and measure the supply.",
+    ],
+    outcomes: [
+      "A fault is worked through to either a repair or a defined next step, so a visit ends with a decision.",
+      "Where the equipment owner decides the next step, that decision is made with the findings from the visit in hand.",
+    ],
   },
   {
     slug: "supply-installation-construction",
@@ -128,6 +157,35 @@ export const services: Service[] = [
       "Bestcor delivers electrical distribution scope end to end — materials, installation and construction.",
     detailBody:
       "We support the supply of materials and the construction of electrical distribution line facilities and associated electrical works, coordinating delivery, installation and the construction activities required to bring distribution scope into service.",
+    /**
+     * Evidence — deck slide 3 ("supply of materials and construction of
+     *  Electrical Distribution Line Facilities"); deck slides 19–21, the civil
+     *  works section: "CIVIL WORKS (SUPPLY AND INSTALLATION OF SERVICE ENTRANCE,
+     *  ERECTION OF FIRST PRIVATE POLE, CONSTRUCTION OF STEEL POLE FOUNDATION,
+     *  ETC.)"; the project register scope "Supply and installation of first
+     *  private pole"; and the approved service-image alt text "Bestcor crew
+     *  carrying out underground/installation works".
+     *
+     *  Deliberately NOT claimed: building or structural construction beyond the
+     *  listed scope, project values, commissioning standards, or the specific
+     *  voltage levels that appear in the OCR'd project register (4.16 kV /
+     *  34.5 kV / 69 kV) — those are register entries with OCR uncertainty and
+     *  would be less conservative than the approved scope wording, which names
+     *  voltage classes rather than figures.
+     */
+    problems: [
+      "Distribution work is not only equipment. Materials, delivery, installation and the construction around them have to line up before the scope can be brought into service.",
+      "When material supply and installation sit with different parties, the interface between them belongs to nobody.",
+      "Distribution facilities depend on civil work — service entrances, poles and foundations — that has to be sequenced with the electrical scope.",
+    ],
+    approach: [
+      "Bestcor supplies materials and constructs electrical distribution line facilities and the associated electrical works.",
+      "The civil scope in the same works includes supply and installation of service entrances, erection of the first private pole, and construction of steel-pole foundations.",
+      "Delivery, installation and construction activities are coordinated so the distribution scope is brought into service as one scope.",
+    ],
+    outcomes: [
+      "Distribution scope runs from material supply through installation and construction, so the interfaces between them stay with one contractor.",
+    ],
   },
   {
     slug: "testing-diagnostics",
@@ -184,7 +242,6 @@ export const services: Service[] = [
       "Transformer oil is handled as part of the same work — dielectric breakdown testing and high-vacuum oil purification are both in the test inventory.",
       "Switchgear condition is checked beyond electrical measurement, including SF6 gas analysis and partial-discharge detection.",
       "Site measurement also covers grounding resistance, phase sequence, primary current injection, power quality, ultrasonic and thermal scanning, and gas detection.",
-      "Repair and replacement extend to the components that carry and protect the installation: load break switches, power fuse assemblies, transformers, relay protection, switchgear and metering.",
     ],
     outcomes: [
       "Testing gives a measured basis for maintenance and replacement planning: an asset whose condition has been tested can be scheduled, repaired or replaced on evidence.",
@@ -212,6 +269,41 @@ export const services: Service[] = [
       "Distribution systems are built from components that must work together — Bestcor knows them.",
     detailBody:
       "We work across the equipment that carries and protects distribution supply: load break switches, power fuse assemblies, transformers, relay protection, switchgear and metering. That covers the switching, transformation and protection hardware at the heart of an electrical distribution facility.",
+    /**
+     * Evidence — deck slide 3 ("repair/replacement of Load Break Switch, Power
+     *  Fuse Assembly, Transformer, Relay Protection, Switchgear, Metering"); the
+     *  scope items above; the project-register scope "Electrical functional test
+     *  of various relay protection low, medium, high voltage equipment" and
+     *  "Electrical functional test of current metering"; and the slide 31–46
+     *  test inventory, which covers exactly these measurements: three-phase
+     *  relay tester, CT & PT analyzer, contact resistance meter, breaker timing
+     *  tester, SF6 gas analyzer and surge comparison tester.
+     *
+     *  Relay protection, metering and instrument transformers are cross-linked
+     *  from Electrical Testing & Diagnostics as well, because the same
+     *  protection chain is both tested and replaced. That overlap is real, not
+     *  duplication: testing assesses them, this service line supplies and
+     *  replaces them.
+     *
+     *  Deliberately NOT claimed: compliance with any protection standard,
+     *  protection settings studies, coordination studies, or manufacturer
+     *  authorisation. No equipment brand is named (the works photographs show
+     *  branded switchgear; a photograph may not be turned into a brand claim).
+     */
+    problems: [
+      "Switching, protection, transformation and metering are separate components that have to work together; a weak point in one shows up in the installation as a whole.",
+      "Protection that has not been functionally tested has not been shown to operate.",
+      "These components are worked on inside an installation that is already built, so a replacement has to suit what is there.",
+    ],
+    approach: [
+      "Bestcor supplies and works on load break switches, power fuse assemblies, transformers, relay protection, switchgear and metering.",
+      "Functional testing of relay protection covers low-, medium- and high-voltage equipment.",
+      "The measurement set for these components includes relay testing, current and potential transformer analysis, contact resistance, breaker timing, SF6 gas analysis and surge comparison.",
+    ],
+    outcomes: [
+      "Protection and metering are assessed alongside the switchgear they work with, so the switching, protection and measurement functions are treated as one installation.",
+      "Functional testing of relay protection gives a basis for deciding whether protection equipment needs attention.",
+    ],
   },
   {
     slug: "pole-line-transmission-works",
@@ -232,6 +324,41 @@ export const services: Service[] = [
       "From the ground up — foundations, pole-line services, lightning protection and line clearance.",
     detailBody:
       "Bestcor performs transmission and pole-line construction works, including steel-pole foundations for transmission lines, ground rehabilitation, installation of pole-line services, lightning-system installation and line-clearance tree trimming. These ground-level disciplines determine long-term line reliability and safety.",
+    /**
+     * Evidence — deck slide 3 ("Construction of Steel-pole Foundation for
+     *  transmission lines, Tree Trimming"); deck slides 17–18 (TREE TRIMMING);
+     *  deck slides 19–21 ("ERECTION OF FIRST PRIVATE POLE, CONSTRUCTION OF STEEL
+     *  POLE FOUNDATION"); deck slides 23–24 ("ANTI-ELECTRIC MANLIFT TRUCK") and
+     *  the approved hero alt text "Bestcor-branded aerial bucket truck in the
+     *  field" plus the pole-line service alt "Bestcor lineman working from an
+     *  aerial lift on a distribution pole", which between them make the aerial
+     *  lift a plainly-visible, already-published fact.
+     *
+     *  The aerial manlift is mentioned because it materially supports this
+     *  service — access at height is part of line work — not because the deck's
+     *  heavy-equipment inventory exists. The rest of that inventory (cranes,
+     *  backhoe, tractor head, service vehicles) is deliberately not published:
+     *  it does not add to what a customer needs to know about this scope.
+     *
+     *  Deliberately NOT claimed: line voltages, transmission-vs-distribution
+     *  classification, right-of-way or permitting work, or outage/energisation
+     *  procedures. Photographs show linemen on poles and in a bucket lift; they
+     *  do not establish live-line work, and no such claim is made.
+     */
+    problems: [
+      "Line-side work happens outdoors and at height, so how the crew reaches the work is part of the scope rather than an afterthought.",
+      "A steel pole is only as good as the foundation under it — ground-level civil work that has to come first.",
+      "Vegetation has to be kept clear of the line.",
+      "Construction along a line disturbs the ground it crosses, and that ground has to be put back.",
+    ],
+    approach: [
+      "Bestcor constructs steel-pole foundations for transmission lines, installs pole-line services, carries out ground rehabilitation and lightning-system installation, and performs tree trimming for line clearance.",
+      "Work at height is carried out from Bestcor's own insulated aerial manlift, part of its field equipment.",
+      "Ground rehabilitation, lightning-system installation and line clearance are carried out as line-side scope, alongside the foundation and pole works.",
+    ],
+    outcomes: [
+      "The ground-level work a line depends on — foundations, ground rehabilitation, lightning protection and line clearance — sits with the contractor that erects the pole line and installs its services.",
+    ],
   },
   {
     slug: "mechanical-services",
@@ -252,6 +379,42 @@ export const services: Service[] = [
       "Rotating equipment, generators and piping — supplied, repaired and installed by one mechanical team.",
     detailBody:
       "Bestcor provides the trading, supply, delivery, repair or rewinding and installation of pumps and motors (1 HP to 800+ HP) and generator sets (1 kVA to 1000+ kVA), plus pipelines and deep-well drilling services. Preventive maintenance keeps the equipment running at maximum efficiency and longevity.",
+    /**
+     * Evidence — deck slide 6 (the mechanical-services section: trading, supply,
+     *  delivery, repair or rewinding and installation of pumps and motors from
+     *  1 HP to 800+ HP, generator sets from 1 kVA to 1000+ kVA, pipelines, and
+     *  deep-well drilling); the scope items above; deck slide 40/45/46 tooling
+     *  (vibration tester, SKF shaft alignment, laser alignment) plus the sound
+     *  level meter; deck slide 6's statement that preventive maintenance keeps
+     *  equipment efficient; and the approved service-image alt text "Bestcor
+     *  technicians servicing a pump and motor set in a plant room".
+     *
+     *  The HP and kVA ranges ARE published here (unlike the voltage figures
+     *  elsewhere) because they are the owner's own scope figures, taken from
+     *  clean slide text rather than OCR, and they are already the governed
+     *  scope wording of this service line.
+     *
+     *  Deliberately NOT claimed: "maximum efficiency and longevity" (slide 6) as
+     *  a guaranteed outcome — it is an unsupported superlative and is left in the
+     *  approved body copy only as the existing owner wording, never restated as a
+     *  result; also not claimed: manufacturer authorisation for rewinding, pump
+     *  performance curves, or generator-set standby/emergency duty (the deck does
+     *  not say what the sets are installed for).
+     */
+    problems: [
+      "Pumps, motors and generator sets wear as mechanical plant, and keeping them serviceable is a different discipline from the electrical work that supplies them.",
+      "The choice between repairing, rewinding and replacing rotating equipment depends on the equipment itself.",
+      "Mechanical scope is not confined to the plant room: pipelines and deep wells carry their own requirements.",
+    ],
+    approach: [
+      "Bestcor trades, supplies, delivers, repairs or rewinds and installs pumps and motors across the 1 HP to 800+ HP range, and generator sets across 1 kVA to 1000+ kVA.",
+      "Pipelines are traded, supplied, delivered and installed, and deep-well drilling is carried out as a field scope in its own right.",
+      "Mechanical condition is assessed with vibration testing and shaft and laser alignment, which Bestcor's test inventory covers.",
+      "Preventive maintenance of mechanical equipment is carried out on the same schedule-based basis as the electrical maintenance.",
+    ],
+    outcomes: [
+      "Pumps, motors and generator sets are handled as plant — supplied, repaired or rewound, installed and maintained within one mechanical line.",
+    ],
   },
 ];
 
